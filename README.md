@@ -9,4 +9,4 @@ The goal of `Slides25HonsStatsComp` is to create and display content for
 days one, four and five of the honours statistical computing course.
 
 The content is available at the following link:
-<https://miguelrodo.github.io/Slides25HonsStatsComp>.
+<https://jakestangroom.github.io/StatisticalComputing>.

@@ -1,0 +1,92 @@
+# Additional Exercises: Set One {#sec-add1 .unnumbered}
+
+## Exercise One:
+
+1.  Calculate $log(i+1)$ for $i=0, ..., 100$. Confirm the average value is $3.647074$.
+
+2.  Generate 10000 random values as follows:
+
+    ```{r, eval=FALSE}
+    set.seed(20190128)
+    y <- rexp(10000)
+    ```
+
+3.  Find the largest value and its position. (Answer: 10.24488, 6150)
+
+4.  How many values are $> 2$ (absolute and %) (Answer 1291, 12.91%)
+
+5.  $y_2$: select every 2nd element of $y$, starting from the first.
+
+6.  $y_3$: replace values $>3$ in $y_2$ with 3. The average of these values should be 0.9423062.
+
+7.  Manually find the variance of $y_3$ and confirm with `var()`.
+
+## Exercise Two:
+
+There are two trees in the middle of the Kalahari. On each tree birds of unknown species are sitting and feeling very hot. A bird from the first tree says to those on the second tree: "Hi - if one of you come to our tree then there will be the same number of us on each tree." "Yeah, right", says a bird from the second tree, "but if one of you comes to our tree, then we will be twice as many on our tree as on yours."
+
+*Adapted from* [these notes](https://www.math.uh.edu/~jmorgan/Math6397/day13/LinearAlgebraR-Handout.pdf).
+
+How many birds are one each tree?
+
+## Exercise Three:
+
+The following problem is known as the Monte Hall problem and was posed in a letter by Steve Selvin to the American Statistician in 1975.
+
+He wrote, Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice?
+
+Write a R program to simulate the above game. Explain what the contestant’s optimal decision is.
+
+## Exercise Four:
+
+Locally weighted scatterplot smoothing (Lowess) is a smoothing technique which is a mixture of moving averages and local regression. Below, we briefly outline the technique before creating a `customLowess` function.
+
+### What is Lowess?
+
+The Lowess approach attempts to look at the closest neighbours of a data point to find some weighted average of the closest neighbours to act as the smoothed data point, providing a smoothed function \begin{equation}
+  \hat{y} = f(x).
+\end{equation}
+
+### Steps to Lowess
+
+1.  Data
+
+As usual, we have observed data pairs $$ (x_1,y_1), \dots, (x_n, y_n).$$
+
+2.  Span
+
+We need to choose the **span** of the smoothing, denoted $f$ such that $0<f<1$. The span defines the number of closest neighbours to use when smoothing point $x_i$ such that $$ k = \lceil f\cdot n\rceil$$ where $k$ is the number of closest neighbours used for point $x_i$ and $n$ is the number of observations.
+
+3.  Compute Weights
+
+The weights applied to each neighbour is calculated using the tricube kernel such that \begin{equation}
+    w_j = \left(1 - \left( \frac{|x_j - x_i|}{d_{max}}  \right)^3  \right)^3
+\end{equation} where $w_j$ is the weight for neighbour $x_j$, $d_{max}$is the distance to the farthest neighbour among the $k$ neighbours selected.
+
+Note that this means that if $|x_j - x_i| \geq d_{max}$, then $w_j = 0$.
+
+4.  Weighted Regression
+
+Perform a weighted linear regression \begin{equation}
+  y = \beta_0 + \beta_1 x + e
+\end{equation} where the weighting means that we want to minimise \begin{equation}
+  \sum_{j \in \text{neighbours}} w_j \left(y_j - (\beta_0 + \beta_1 x_j)^2\right)
+\end{equation}
+
+The optimal $\beta$ is given by $$\hat\beta = (X^TWX)^{-1}X^TWy$$ where $W$ is the diagonal matrix given by the diagonal values $(w_1, ..., w_k)$.
+
+The smoothed value for $x_i$ is then the predicted value $$\hat y_i = \hat \beta_0 + \hat \beta_1 x_i$$
+
+5.  Repeat for each $x_i$
+
+### Question
+
+1.  **Generate Simulated Data:**
+    -   Set your seed to 1, i.e. `set.seed(1)`.
+    -   Create $\boldsymbol x$ as a sequence of numbers from 1 to 100.
+    -   Generate $\boldsymbol y$ as a noisy sine wave such that $$y_i = \sin\left(\frac{x_i}{10}\right) + e_i$$ where $e_i \sim \mathcal{N}\left(0, 0.2^2\right)$
+2.  **Implement the LOWESS Algorithm:**
+    -   Define a function `customLowess(x, y, f)` that returns the smoothed values.
+3.  **Compare with R’s Built-in `lowess()`:**
+    -   Use the built-in `lowess()` function with the same `f` value. You will also need to set the `iter` argument to 0.
+    -   Plot both curves to compare their smoothing values.
