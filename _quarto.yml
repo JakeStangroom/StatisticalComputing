@@ -16,6 +16,7 @@ project:
   - loops.qmd
   - Vectos.qmd
   - extraQs.qmd
+  - sol1.qmd
   output-dir: docs
 book:
   title: Statistical Computing
@@ -36,6 +37,7 @@ book:
     - projrsimple.qmd
     - r.qmd
     - prac1.qmd
+    - sol1.qmd
   - part: day2.qmd
     chapters: 
     - varAssign.qmd

@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./day2.html" rel="next">
+<link href="./sol1.html" rel="next">
 <link href="./r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -191,6 +191,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical One</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sol1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solution</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -268,7 +274,7 @@ window.Quarto = {
 <ol type="1">
 <li>Find all rows in “airquality” that have missing values. Note that the <code>airquality</code> dataset in <code>R</code> is always available (just type <code>airquality</code> in the console to see it).</li>
 <li>Find mean, sd, min, max for each of temperature and ozone level.</li>
-<li>For linear regression, parameter estimates can be found as follows. <span class="math inline">\(\hat{\beta} = (X^TX)^{-1}X^TY\)</span> Here, Y is the response variable, and X is the design matrix. The cars data (an R data set, also always available in <code>R</code>) contains two variables: speed and distance to stop. Fit a simple linear regression model to these data, i.e.&nbsp;find the <span class="math inline">\(\beta\)</span> estimates, using the equation above, and matrix calcuations in R.</li>
+<li>For linear regression, parameter estimates can be found as follows. <span class="math inline">\(\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^TY\)</span> Here, Y is the response variable, and X is the design matrix. The cars data (an R data set, also always available in <code>R</code>) contains two variables: speed and distance to stop. Fit a simple linear regression model to these data, i.e.&nbsp;find the <span class="math inline">\(\beta\)</span> estimates, using the equation above, and matrix calcuations in R.</li>
 <li>Check that you get the same <span class="math inline">\(\beta\)</span> estimates as when fitting the linear regression model using lm() in R.</li>
 </ol>
 
@@ -699,8 +705,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./day2.html" class="pagination-link" aria-label="Day 2: More on R Programming">
-        <span class="nav-page-text">Day 2: More on R Programming</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./sol1.html" class="pagination-link" aria-label="Solution">
+        <span class="nav-page-text">Solution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

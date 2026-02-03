@@ -19,6 +19,6 @@ Our goal is to address both of these challenges. This course focuses on statisti
     -   Test One: 12 February, 9–11 AM.
     -   Test Two: 6 March, 9-11 AM.
 -   **Lab Exam**
-    -   June
+    -   June  
 
 *These notes are adapted from those written by Miguel Rodo and still make some references to optional videos produced by him.*

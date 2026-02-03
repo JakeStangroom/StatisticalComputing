@@ -1,0 +1,116 @@
+## Solution {#sec-day1-sol .unnumbered}
+
+### Part One:
+
+Since `airquality` is always available, we do not need to import it explicitly like we will have to do usually. Let us assign this data to variable `df` and view it to help with understanding.
+
+```{r, eval = F}
+df <- airquality
+class(df)
+
+# View(df)
+```
+
+We can also see what `df` really is; it is a `data.frame`.
+
+Now, there is an ABUNDANCE of ways to achieve the rest of the question. I will do a few:
+
+-   **Brute Force:**
+
+    This method uses for loops, considering every entry by going through each row and each column. We then check every entry to see if it is `NA`. If the entry is `NA` then take note of the row; otherwise check the next entry. Note: there is a `break` in the for loop because we do not want to double count a row if it has multiple columns which have `NA` entries for a specific row.
+
+```{r}
+# How do I know if something is na: is.na()
+df <-  airquality
+
+naRows <- c()
+for (r in 1:nrow(df)){
+  for (col in 1:ncol(df)){
+    if (is.na(df[r, col])){
+      naRows <- c(naRows, r)
+      break
+    }
+  }
+}
+print(naRows)
+
+```
+
+-   **Progressive Elegance:**
+
+```{r}
+
+# which returns the indices which meet a certain condition
+a <- c()
+for (col in 1:ncol(df)){
+  a <- c(a, which(is.na(df[, col])))
+}
+a <- sort(unique(a))
+
+# complete.cases provides a boolean for whether the whole observation is NA free
+b <- which(!complete.cases(df))
+
+# Are these all the same?
+cond1 <- all(a == b)
+cond2 <- all(a == naRows)
+cond3 <- all(b == naRows)
+print("Are they the same thing?")
+print(cond1 && cond2 && cond3)
+
+```
+
+### Part Two:
+
+The unproblematic calculations are:
+
+```{r}
+min(df$Temp); max(df$Temp); mean(df$Temp); sd(df$Temp)
+```
+
+The *Ozone* data is a bit problematic because it contains `NA`'s which means that some of these calculations cannot be completed. We need to remove these `NA`'s but we could do this in two ways:
+
+1.  Remove all incomplete rows.
+2.  Only remove the `NA` for the ozone.
+
+At this point, when we are just getting exposure to `R`, so there is no wrong way.
+
+```{r}
+# 1.
+cleanDf <- df[-naRows, ]
+min(cleanDf$Ozone); max(cleanDf$Ozone); mean(cleanDf$Ozone); sd(cleanDf$Ozone)
+
+# 2.
+cleanOzone <- na.omit(df$Ozone)
+min(cleanOzone); max(cleanOzone); mean(cleanOzone); sd(cleanOzone)
+
+# or even better:
+min(df$Ozone, na.rm = T); max(df$Ozone, na.rm = T); mean(df$Ozone, na.rm = T); sd(df$Ozone, na.rm = T)
+```
+
+### Part Three:
+
+Here we assign the response and covariate, and create the design matrix $X$. A design matrix may or may not be a familiar term to you. If not, a design matrix is the covariate matrix with a column of 1s. This is because it is required for the intercept term $\beta_0$.
+
+```{r}
+# Let us remove all the variables and clean the environment
+
+rm(list = ls())
+
+df <- cars
+Y <- df$dist
+speed <- df$speed
+X <- cbind(1, speed)
+
+b <- solve(t(X) %*% X) %*% t(X) %*% Y
+print(b)
+
+```
+
+### Part Four:
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+summary(model)
+
+model$coefficients
+```
