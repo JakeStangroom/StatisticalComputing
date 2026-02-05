@@ -17,6 +17,10 @@ project:
   - Vectos.qmd
   - extraQs.qmd
   - sol1.qmd
+  - day4.qmd
+  - tidy1.qmd
+  - tidy2.qmd
+  - pard-day-four.qmd
   output-dir: docs
 book:
   title: Statistical Computing
@@ -45,6 +49,11 @@ book:
     - loops.qmd
     - Vectors.qmd
     - extraQs.qmd
+  - part: day4.qmd
+    chapters: 
+    - tidy1.qmd
+    - tidy2.qmd
+    - prac-day-four.qmd
 format:
   html:
     theme: cosmo

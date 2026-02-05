@@ -1,3 +1,3 @@
-# Day Four: Transforming and displaying data {#sec-day4 .unnumbered}
+# Day Four: A Tidyverse Workflow {#sec-day4 .unnumbered}
 
-
+Nestled within a discussion of dataframes in *R,* we will introduce an alternative, refined approach to a statistician's workflow. Whilst one could use *base R* to import, transform, model and visualise data; ***Tidyverse*** offers a more modern approach to this workflow . In this section, we will jump into the Tidyverse and cover its benefits and any of its flaws.

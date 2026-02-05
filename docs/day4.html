@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Git and GitHub – Statistical Computing</title>
+<title>Day Four: A Tidyverse Workflow – Statistical Computing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./projrsimple.html" rel="next">
-<link href="./quarto.html" rel="prev">
+<link href="./tidy1.html" rel="next">
+<link href="./extraQs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -129,7 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day1.html">Day One: Projects in R</a></li><li class="breadcrumb-item"><a href="./git.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day4.html">Day Four: A Tidyverse Workflow</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git.html" class="sidebar-item-text sidebar-link active">
+  <a href="./git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Git and GitHub</span></span></a>
   </div>
 </li>
@@ -249,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./day4.html" class="sidebar-item-text sidebar-link">
+            <a href="./day4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Day Four: A Tidyverse Workflow</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -281,28 +246,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#prerequites" id="toc-prerequites" class="nav-link active" data-scroll-target="#prerequites"><span class="header-section-number">4.1</span> Prerequites</a></li>
-  <li><a href="#setting-up-git-and-github" id="toc-setting-up-git-and-github" class="nav-link" data-scroll-target="#setting-up-git-and-github"><span class="header-section-number">4.2</span> Setting Up Git and GitHub</a>
-  <ul class="collapse">
-  <li><a href="#why-care-about-git" id="toc-why-care-about-git" class="nav-link" data-scroll-target="#why-care-about-git"><span class="header-section-number">4.2.1</span> Why care about Git?</a></li>
-  <li><a href="#approach-1-create-project-using-git-then-download-it-to-your-machine" id="toc-approach-1-create-project-using-git-then-download-it-to-your-machine" class="nav-link" data-scroll-target="#approach-1-create-project-using-git-then-download-it-to-your-machine"><span class="header-section-number">4.2.2</span> Approach 1: Create project using Git, then download it to your machine</a></li>
-  <li><a href="#approach-2-begin-with-rstudio-project-on-your-machine-and-then-connect-it-to-github" id="toc-approach-2-begin-with-rstudio-project-on-your-machine-and-then-connect-it-to-github" class="nav-link" data-scroll-target="#approach-2-begin-with-rstudio-project-on-your-machine-and-then-connect-it-to-github"><span class="header-section-number">4.2.3</span> Approach 2: Begin with <code>RStudio</code> project on your machine, and then connect it to GitHub</a></li>
-  </ul></li>
-  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources"><span class="header-section-number">4.3</span> Further resources</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day1.html">Day One: Projects in R</a></li><li class="breadcrumb-item"><a href="./git.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-day1-git" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Git and GitHub</span></span></h1>
+<h1 class="title"><span id="sec-day4" class="quarto-section-identifier">Day Four: A Tidyverse Workflow</span></h1>
 </div>
 
 
@@ -319,118 +271,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="prerequites" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="prerequites"><span class="header-section-number">4.1</span> Prerequites</h2>
-<ol type="1">
-<li>Create a GitHub account: <a href="https://www.github.com">GitHub</a>.</li>
-<li>Install Git: <a href="https://git-scm.com/downloads">Git</a>.</li>
-</ol>
-</section>
-<section id="setting-up-git-and-github" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="setting-up-git-and-github"><span class="header-section-number">4.2</span> Setting Up Git and GitHub</h2>
-<p>There are two main approaches for setting up a new R project that you want on GitHub:</p>
-<ul>
-<li>Approach 1: Create project using Git, then download it to your machine</li>
-<li>Approach 2: Begin with pre-existing <code>RStudio</code> project, and then connect to GitHub</li>
-</ul>
-<p>The first approach tends to be easier.</p>
-<section id="why-care-about-git" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="why-care-about-git"><span class="header-section-number">4.2.1</span> Why care about Git?</h3>
-<ol type="1">
-<li>You will submit assignments to GitHub for peer-marking.</li>
-<li>Industry uses Git for everything.</li>
-</ol>
-<p>At minimum, Git provides you with a highly improved method of saving your work. With Git, you will never name a file <code>final_version_72</code> again! At its core, Git is a version control of documents which allows you to keep track of changes made and revert to previous changes if need be. Furthermore, it allows for collaboration without having to send updated versions to your friend in zip files over and over. There is an abundance of Git-jargon; you only need these few words to start:</p>
-<ul>
-<li><p>Repository (pronounced <em>Repo</em>) : <em>The folder where we store everything we want to track.</em></p></li>
-<li><p>Clone: <em>Copy another repo so you can plagiarize as your own</em></p></li>
-<li><p>Fork: <em>Collaborate on someone else’s repo</em></p></li>
-<li><p>Commit: <em>Create a checkpoint in the repo, locally</em></p></li>
-<li><p>Pull: <em>Update the repo with any changes not already on your version</em></p></li>
-<li><p>Push: <em>Make your checkpoint (commit) visible globally</em></p></li>
-</ul>
-</section>
-<section id="approach-1-create-project-using-git-then-download-it-to-your-machine" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="approach-1-create-project-using-git-then-download-it-to-your-machine"><span class="header-section-number">4.2.2</span> Approach 1: Create project using Git, then download it to your machine</h3>
-<p>Within here, there are two approaches. One of them uses GitHub Desktop, a standalone program, and the other uses <a href="https://github.com">github.com</a> itself, the website.</p>
-<p>We <strong>strongly</strong> suggest using GitHub Desktop, as it will make managing your Git repositories easier after setup.</p>
-<section id="use-github-desktop" class="level4" data-number="4.2.2.1">
-<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="use-github-desktop"><span class="header-section-number">4.2.2.1</span> Use GitHub Desktop</h4>
-<p>GitHub Desktop is a standalone program for working with Git and GitHub. It is very beginner-friendly. See <a href="https://amathuba.uct.ac.za/d2l/le/lessons/166536/topics/3707345">this</a> for more.</p>
-<p>Here is a <a href="https://www.youtube.com/watch?v%20=8Dd7KRpKeaE">video</a> describing how to use it. It breaks down the basics, but contains a little more information than you need, so you can stop when you are set up.</p>
-</section>
-<section id="use-github" class="level4" data-number="4.2.2.2">
-<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="use-github"><span class="header-section-number">4.2.2.2</span> Use GitHub</h4>
-<p>You can also create a new repo directly on GitHub, and then clone it (Git-speak for download it). Here are the instructions: <a href="https://happygitwithr.com/new-github-first">New project, GitHub first</a>.</p>
-</section>
-</section>
-<section id="approach-2-begin-with-rstudio-project-on-your-machine-and-then-connect-it-to-github" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="approach-2-begin-with-rstudio-project-on-your-machine-and-then-connect-it-to-github"><span class="header-section-number">4.2.3</span> Approach 2: Begin with <code>RStudio</code> project on your machine, and then connect it to GitHub</h3>
-<p>See the video <code>git.mp4</code> for this process illustrated.</p>
-<p>In <code>RStudio</code>, open your project.</p>
-<p>Then, run the following code.</p>
-<section id="install-usethis" class="level4" data-number="4.2.3.1">
-<h4 data-number="4.2.3.1" class="anchored" data-anchor-id="install-usethis"><span class="header-section-number">4.2.3.1</span> Install <code>usethis</code></h4>
-<p>Firstly, ensure <code>usethis</code> is installed:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"usethis"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="introduce-yourself-to-git" class="level4" data-number="4.2.3.2">
-<h4 data-number="4.2.3.2" class="anchored" data-anchor-id="introduce-yourself-to-git"><span class="header-section-number">4.2.3.2</span> Introduce yourself to Git</h4>
-<p>Then, if you have not set Git up before, you’ll need to run the following. Note that by “not set up Git”, I do not mean whether you’ve installed Git, but rather whether you’ve given Git basic authorship information. If you’re not sure, you can run the following:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_config_global</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I am not exactly sure what it looks like if you’ve not set up Git authorship information, but the key thing is that it will not have a row where the first column is <code>user.name</code> and the second column is your name, and a row where the first column is <code>user.email</code> and the second column is your email address.</p>
-<p>If you can see you’ve not set <code>user.name</code> and <code>user.email</code>, then run the following, swopping <code>NULL</code> with your name and email address:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set your username and your email address</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>username <span class="ot">&lt;-</span> <span class="cn">NULL</span>  <span class="co"># replace NULL with e.g. "Miguel Rodo" (be sure to include the quotes)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># replace NULL with e.g. "miguel.rodo@uct.ac.za"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">is.null</span>(username)) <span class="co"># just checking you set this</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">is.null</span>(email))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_config_global_set</span>(<span class="st">"user.name"</span>,  username)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_config_global_set</span>(<span class="st">"user.email"</span>, email)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="initialise-git-for-the-project" class="level4" data-number="4.2.3.3">
-<h4 data-number="4.2.3.3" class="anchored" data-anchor-id="initialise-git-for-the-project"><span class="header-section-number">4.2.3.3</span> Initialise Git for the project</h4>
-<p>Finally, you are ready to initialise <code>git</code> for that project:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>When it asks you whether you want to commit the extra files, say yes. Be aware that you don’t type “Absolutely” or “Definitely” or whatever corresponds to “yes”, you just type the number that corresponds to <code>yes</code>.</p>
-<p>After running the above, to get the <code>Git</code> pane to appear in the top right corner (alongside <code>Environment</code> and <code>History</code>), you need to close and re-open <code>RStudio</code>.</p>
-<p>You will not need to install <code>usethis</code> and set <code>Git</code> authorship information for each project, but you will need to initialise <code>Git</code> for each project.</p>
-</section>
-<section id="connect-git-to-github" class="level4" data-number="4.2.3.4">
-<h4 data-number="4.2.3.4" class="anchored" data-anchor-id="connect-git-to-github"><span class="header-section-number">4.2.3.4</span> Connect Git to GitHub</h4>
-<p>Run the following code:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Name the token, set the expiry date and click on <code>Create</code>. Then copy the token (it looks like <code>ghp_akerjlwk4j5qlk45j</code>).</p>
-<p>Then, run the following code:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and paste your token.</p>
-</section>
-</section>
-</section>
-<section id="further-resources" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="further-resources"><span class="header-section-number">4.3</span> Further resources</h2>
-<ul>
-<li>Happy Git with R:
-<ul>
-<li>Set up guidance:
-<ul>
-<li><a href="https://happygitwithr.com/big-picture">Why Git? Why GitHub?</a></li>
-<li><a href="https://happygitwithr.com/github-acct">Register a GitHub account</a></li>
-<li><a href="https://happygitwithr.com/install-git">Install Git</a></li>
-<li><a href="https://happygitwithr.com/hello-git">Introduce Yourself to Git</a></li>
-<li><a href="https://happygitwithr.com/https-pat">Personal Access tokens for HTTPS</a></li>
-</ul></li>
-<li>Description of how Git works and how to use it:
-<ul>
-<li><a href="https://happygitwithr.com/git-intro">Some Git Basics</a>, and then the next few sections</li>
-</ul></li>
-</ul></li>
-</ul>
+<p>Nestled within a discussion of dataframes in <em>R,</em> we will introduce an alternative, refined approach to a statistician’s workflow. Whilst one could use <em>base R</em> to import, transform, model and visualise data; <strong><em>Tidyverse</em></strong> offers a more modern approach to this workflow . In this section, we will jump into the Tidyverse and cover its benefits and any of its flaws.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -834,13 +677,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./quarto.html" class="pagination-link" aria-label="Literate Programming">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Literate Programming</span></span>
+      <a href="./extraQs.html" class="pagination-link" aria-label="Additional Exercises: Set One">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Additional Exercises: Set One</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./projrsimple.html" class="pagination-link" aria-label="`projrsimple`">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><code>projrsimple</code></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tidy1.html" class="pagination-link" aria-label="The Tidyverse">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Tidyverse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

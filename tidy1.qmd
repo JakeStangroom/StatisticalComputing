@@ -1,0 +1,214 @@
+# The Tidyverse {#sec-day3-tidy}
+
+We have had some exposure on how to store and handle data in *R* with vectors, matrices and dataframes. While powerful, this base *R* approach can be difficult to work with, especially when reviewing someone else's code or when you return to you own code after a couple of months.
+
+Enter the **Tidyverse**.
+
+Tidyverse is a collection of packages that share a common philosophy of data handling. "All packages share an underlying design philosophy, grammar, and data structures." This provides a consistent interface with a focus on readable syntax**.** It is not a different language; it is not incompatible with the base *R* that you already know.
+
+| Package   | Purpose            |
+|-----------|--------------------|
+| `tibble`  | Modern data frames |
+| `dplyr`   | Data manipulation  |
+| `tidyr`   | Reshaping data     |
+| `ggplot2` | Visualisation      |
+| `readr`   | Data import        |
+
+In Base R, functions were written by different people over 40 years, each of them with a personalised design logic.
+
+-   Some use `data = df`.
+
+-   Some use `x` and `y` arguments.
+
+-   Some use `formula` notation (`y ~ x`).
+
+This means you have to memorize a different syntax for every new task. This makes code difficult to code and taxing to follow in many cases.
+
+The Tidyverse is a collection of packages (for data, dates, strings, and plots) that all **share the same grammar**. If you learn the grammar for one, you essentially learn it for all of them. This grammar leverages the notion of *Tidy Data* where everything in the tidyverse expects a tidy dataframe; improving how we can chain functions together because consistency in the interface.
+
+## Readability
+
+To understand why we use the tidyverse, let us look at a common problem: cleaning data. Consider the following code options.
+
+1.  **Option One (Base R):**
+
+```{r, eval = FALSE}
+data(mtcars)
+
+# We want cars with 4 cylinders, and we want to calculate a new metric
+clean_cars <- mtcars[mtcars$cyl == 4, ]
+mean_metric <- mean(clean_cars$mpg / clean_cars$wt)
+
+print(mean_metric)
+```
+
+2.  **Option Two (Tidyverse):**
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+```{r, eval=FALSE}
+mtcars %>%
+  filter(cyl == 4) %>%
+  mutate(metric = mpg / wt) %>%
+  summarise(mean_metric = mean(metric))
+```
+
+If you are debugging between these two options, which would you prefer? The second option allows you to read the process like a sentence: take the data, filter it, mutate a new column, then summarise it. The first option requires you to mentally track row indices and column names simultaneously.
+
+This readability is driven by the following two sections.
+
+### The Pipe Operator `%>%`
+
+The above code leverages a new operator, the pipe operator `%>%` . Without getting technical, the operator takes the object on the left and uses it as the first argument of the function on the right. This approach offers an improvement in readability.
+
+In mathematics (and *base R*), we often require a composition of functions such as: $f(g(h(x)))$. Without becoming well accustomed with this nesting, it takes some thought to process the composition logic. Similarly, in code we have compositions like:
+
+```{r, eval=FALSE}
+# Base R nesting
+summarise(group_by(filter(data, variable > 0), category), mean_val = mean(value))
+```
+
+To read this, we have to find the innermost parenthesis (filter) and work its way out. The pipe operator lets us write code the way we think, and the way we speak.
+
+```{r, eval = FALSE}
+# Tidyverse piping
+data %>%
+  filter(variable > 0) %>%
+  group_by(category) %>%
+  summarise(mean_val = mean(value)) 
+```
+
+*Tip: You can press `Ctrl` + `Shift` + `M` (or `Cmd` + `Shift` + `M` on Mac) to insert `%>%`.*
+
+*Note: In 2021, R introduced a pipe operator into base R, so you could use* `%>%` *instead without needing to import tidyverse.*
+
+### One Verb, One Job:
+
+As we have seen many times already, there are multiple ways to achieve the same task in *R*. Many Base *R* functions are themselves compositions of functions and there are operators which are overloaded. For example, the square bracket, indexing operator, `[`, does three different things depending on where you put the comma:
+
+1.  Selects rows: `mtcars[1:3 , ]`
+2.  Selects columns: `mtcars[ , 1:2]`
+3.  Filters data: `mtcars[mtcars$cyl == 4 , ]`
+
+Whilst these are easier examples which may be easy to keep track of, tidyverse simplifies it further by enforces a strict **One Verb = One Job** policy. Whilst there are plenty of functions / verbs available with tidyverse, here are some of the most important functions which leverage the language of statistics.
+
+-   `filter()`: Only touches **rows**.
+
+-   `select()`: Only touches **columns**.
+
+-   `mutate()`: Only creates **new variables**.
+
+-   `summarise()`: Only does **math** (reduces data).
+
+If you can describe the process in statistical language, then there is probably a tidyverse function for it. Furthermore, these verbs take in a dataframe and output a dataframe. This helps with the predictability and readability of code. Stacked with `%>%`, code quickly reads like a normal sentence.
+
+*Tip: type `dplyr::`* *in the console, and you can view the full list of available functions.*
+
+*Warning: when you import `tidyverse`, certain base R functions will be overwritten which can result in unexpected results.*
+
+#### Verb examples
+
+Here is a concise summary of the content on the `dplyr` section of R4DS. For more examples, refer the excellent examples within each function's help file (e.g. `?filter`).
+
+To run the examples below, you will need to attach the `nycflights13` package and the `tidyverse` package (or just the `dplyr` package).
+
+```{r}
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr") 
+} 
+library(dplyr) 
+data(flights, package = "nycflights13") 
+flights
+```
+
+#### Rows
+
+The rows functions select rows (`filter`), order rows (`arrange`), and select distinct rows (`distinct`).
+
+-   **filter()**: Keeps rows that meet specified conditions.
+
+    ```{r}
+    flights %>% filter(month == 1)
+    ```
+
+-   **arrange()**: Reorders rows based on column values.
+
+    ```{r}
+    flights %>% arrange(dep_delay)
+    ```
+
+-   **distinct()**: Returns unique rows or unique combinations of specified columns.
+
+    ```{r}
+    flights %>% distinct(origin, dest)
+    ```
+
+#### Columns
+
+The columns functions create new columns (`mutate`), select columns (`select`), rename columns (`rename`), and relocate columns (`relocate`).
+
+-   **select()**: Chooses and reorders specific columns.
+
+    ```{r}
+    flights %>% select(year, month, day, dep_delay)
+    ```
+
+    -   Selecting a range:
+
+        ```{r}
+        flights %>% select(year:day)
+        ```
+
+    -   Selecting all columns except some:
+
+        ```{r}
+        flights %>% select(!year:arr_delay)
+        ```
+
+-   **mutate()**: Creates new columns derived from existing ones.
+
+    ```{r}
+    flights %>%
+      mutate(speed = distance / air_time * 60) %>%
+      select(distance, air_time, speed)
+    ```
+
+-   **rename()**: Changes column names without removing other columns.
+
+    ```{r}
+    flights %>% rename(YEAR = year)
+    ```
+
+-   **relocate()**: Moves columns to a new position within the data frame.
+
+    ```{r}
+    flights %>% relocate(carrier, flight)
+    ```
+
+    -   Moving the columns before a specified column:
+
+        ```{r}
+        flights %>% relocate(carrier, flight, .before = year)
+        ```
+
+#### Groups & Summaries
+
+The groups and summaries functions group data (`group_by`) and summarise data within groups (`summarise`).
+
+-   **group_by()**: Splits the data into groups based on one or more columns. The grouping is not visible, and does not create multiple dataframes. See `summarise` below for how to use the groups.
+
+    ```{r}
+    flights %>% group_by(month)
+    ```
+
+-   **summarise()**: Computes summary statistics for each group.
+
+    ```{r}
+    flights %>% group_by(month) %>% summarise(avg_delay = mean(dep_delay, na.rm = TRUE))
+    ```
+
+
+-   **ungroup():** removes the grouping metadata from a data frame.
+
+
