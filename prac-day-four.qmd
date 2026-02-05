@@ -1,6 +1,5 @@
-# Practical Day Four {#sec-day4-prac}
+# Practical Day Four {#sec-day4-prac .unnumbered}
 
-**Note**: this *was* `Practical Day Five`, but I realised I got my days wrong.
 
 ## Introduction
 
