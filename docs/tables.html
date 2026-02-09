@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Variable Assignment – Statistical Computing</title>
+<title>15&nbsp; Tables – Statistical Computing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./logic.html" rel="next">
-<link href="./day2.html" rel="prev">
+<link href="./prac-day-five.html" rel="next">
+<link href="./ggplot2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day2.html">Day 2: More on R Programming</a></li><li class="breadcrumb-item"><a href="./varAssign.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variable Assignment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day5.html">Day Five: Displaying data</a></li><li class="breadcrumb-item"><a href="./tables.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Tables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./varAssign.html" class="sidebar-item-text sidebar-link active">
+  <a href="./varAssign.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variable Assignment</span></span></a>
   </div>
 </li>
@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables.html" class="sidebar-item-text sidebar-link">
+  <a href="./tables.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Tables</span></span></a>
   </div>
 </li>
@@ -315,22 +315,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#assignment-operators" id="toc-assignment-operators" class="nav-link active" data-scroll-target="#assignment-operators"><span class="header-section-number">8.1</span> Assignment Operators</a>
+  <li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link active" data-scroll-target="#general-guidelines"><span class="header-section-number">15.1</span> General Guidelines</a></li>
+  <li><a href="#generating-a-table-from-r" id="toc-generating-a-table-from-r" class="nav-link" data-scroll-target="#generating-a-table-from-r"><span class="header-section-number">15.2</span> Generating a table from <code>R</code></a>
   <ul class="collapse">
-  <li><a href="#what-is-scope" id="toc-what-is-scope" class="nav-link" data-scroll-target="#what-is-scope"><span class="header-section-number">8.1.1</span> What is scope?</a></li>
-  <li><a href="#where-is-the-problem" id="toc-where-is-the-problem" class="nav-link" data-scroll-target="#where-is-the-problem"><span class="header-section-number">8.1.2</span> Where is the problem?</a></li>
-  <li><a href="#what-about-the---operator" id="toc-what-about-the---operator" class="nav-link" data-scroll-target="#what-about-the---operator"><span class="header-section-number">8.1.3</span> What about the <code>&lt;&lt;-</code> operator?</a></li>
+  <li><a href="#computed-table" id="toc-computed-table" class="nav-link" data-scroll-target="#computed-table"><span class="header-section-number">15.2.1</span> Computed table</a></li>
+  <li><a href="#copied-into-a-quarto-document" id="toc-copied-into-a-quarto-document" class="nav-link" data-scroll-target="#copied-into-a-quarto-document"><span class="header-section-number">15.2.2</span> Copied into a Quarto document</a></li>
+  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex"><span class="header-section-number">15.2.3</span> <code>LaTeX</code></a></li>
   </ul></li>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr"><span class="header-section-number">8.2</span> TL;DR</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day2.html">Day 2: More on R Programming</a></li><li class="breadcrumb-item"><a href="./varAssign.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variable Assignment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day5.html">Day Five: Displaying data</a></li><li class="breadcrumb-item"><a href="./tables.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Tables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-day2-assign" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Variable Assignment</span></span></h1>
+<h1 class="title"><span id="sec-day5-tables" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Tables</span></span></h1>
 </div>
 
 
@@ -347,191 +347,203 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In the <a href="@sec-day1-r">previous chapter</a>, we discussed the assignment of variables in the most basic way. That is, you can assign a value to a variable by using either of the operators <code>&lt;-</code> or <code>=</code>, whereby the <code>&lt;-</code> operator is preferred. This is not quite complete.</p>
-<ol type="1">
-<li><p>There are more assignment operators</p></li>
-<li><p>They are not all <em>truly</em> equivalent</p></li>
-</ol>
-<p><em>Tip: you can press <code>Alt</code></em> + <code>-</code> <em>to get <code>&lt;-</code></em> <em>when in a code chunk or r-script.</em></p>
-<section id="assignment-operators" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="assignment-operators"><span class="header-section-number">8.1</span> Assignment Operators</h2>
-<p>Whilst the operators: <code>&lt;-</code>, <code>=</code> are definitely the most common assignment operators in <em>R</em>, <code>&lt;&lt;-</code> , <code>-&gt;</code>, and <code>-&gt;&gt;</code> are also valid assignment operators. Therefore, the following will all achieve the same result, the number 3 will be stored to the appropriate variable:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;&lt;-</span> <span class="dv">3</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="ot">-&gt;</span> e</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="ot">-&gt;&gt;</span> f</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<p>Where the problem arises is with functions and a notion called <em>scope</em>.</p>
-<section id="what-is-scope" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="what-is-scope"><span class="header-section-number">8.1.1</span> What is scope?</h3>
-<p>Without getting too technical, when we assign a variable to a value there is a block of memory which gets allocated to store the information of that variable. For example, when we assign <code>a &lt;- 3</code>, there is a small bit (48 bytes) of memory which is allocated to the variable <code>a</code>. That means that when <code>a</code> is referenced, <em>R</em> knows to go look at that memory which shows that the value of the variable is <code>3</code>. This memory allocation is not necessarily persistent.</p>
-<p>When we assign a variable in general, then the memory allocation will remain there until we explicitly remove it; however, when we call a function, that is <strong>not</strong> necessarily true. For example, consider the following code chunk:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  localVar <span class="ot">&lt;-</span> input</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(localVar)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(localVar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The function assigns the <code>input</code> to a variable, <code>localVar</code> but the <code>print(localVar)</code> line will produce an error. This is because the memory allocation for <code>localVar</code> is only assigned for the use of the function. Once the function returns, then that memory allocation is freed up once more. Therefore, we call the variable a <em>local variable</em> since it can realistically only be used within the function. A variable which is stored indefinitely is known as a <em>global variable.</em> The period for which the variable is allocated can be loosely termed as its scope.</p>
+<p>When it comes to tables in academic writing or reports, clear and consistent formatting is essential.</p>
+<section id="general-guidelines" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="general-guidelines"><span class="header-section-number">15.1</span> General Guidelines</h2>
+<ul>
+<li><p><strong>Table Styling:</strong></p>
+<ul>
+<li><strong>Avoid Vertical Lines:</strong> Most good style guides recommend that tables do not include vertical lines. Horizontal lines should typically only appear above and below the header row and at the bottom of the table.</li>
+<li><strong>Minimal Horizontal Lines:</strong> Use only as many horizontal lines as necessary to separate the header from the data.</li>
+<li><strong>Rounding and Significant Figures:</strong> Present numerical data with a limited, preferrably consistent number of decimal/significant places (usually 2 or 3) to enhance readability. Use a functions like or <code>round()</code> or <code>signif()</code>.</li>
+<li><strong>Headings</strong>: Headings should consistently be either title or sentence case, and should not contain punctuation or programming syntax/formatting (e.g.&nbsp;<code>Participant_ID</code>). Headings can be bold or not, but should be consistent throughout the document.</li>
+</ul></li>
+<li><p><strong>Captions and Cross-Referencing:</strong></p>
+<p>Every table should have a concise caption that includes a title and a descriptive sentence. Abbreviations or symbols used within the table must be defined in the caption. In Quarto, assign a label (e.g., <code>tab-summary</code>) so that you can cross-reference the table in your text with <code>@tab-summary</code>. <em>Note:</em> All tables should be referenced in your text before they appear.</p></li>
+<li><p><strong>Self-contained:</strong>:</p>
+<p>Tables should be self-contained in the sense that the reader can understand the table without refering to the main text. This is achieved by including a caption that has an informative detail, uses sentences to describe any important details, and closes with abbreviations or symbols used in the table.</p></li>
+</ul>
 </section>
-<section id="where-is-the-problem" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="where-is-the-problem"><span class="header-section-number">8.1.2</span> Where is the problem?</h3>
-<p>Now let us break the function. Firstly, let us clear all variables which have been assigned previously, and then reassign the same function above.</p>
+<section id="generating-a-table-from-r" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="generating-a-table-from-r"><span class="header-section-number">15.2</span> Generating a table from <code>R</code></h2>
+<p>Typically, it is convenient to create the table in <code>R</code> in the relevant output format.</p>
+<p>To run the following code, attach the following packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dplyr"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"knitr"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> pkg_vec) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(x, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if you want to programmatically attach</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># libraries, this is the way to to do it</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="computed-table" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="computed-table"><span class="header-section-number">15.2.1</span> Computed table</h3>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary table of key statistics by species</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>penguin_summary <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Flipper length</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(flipper_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Body Mass</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Species =</span> species)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the table using knitr::kable</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  penguin_summary,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g)."</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<caption>Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species</th>
+<th style="text-align: right;">Flipper length</th>
+<th style="text-align: right;">Body Mass</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">189.95</td>
+<td style="text-align: right;">3700.66</td>
+<td style="text-align: right;">152</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: right;">195.82</td>
+<td style="text-align: right;">3733.09</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: right;">217.19</td>
+<td style="text-align: right;">5076.02</td>
+<td style="text-align: right;">124</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The column names were formatted using <code>dplyr</code>.</li>
+<li>The table styling (no vertical lines, placement of horizontal lines, bold headings) was set using <code>knitr::kable()</code>.</li>
+<li>The table caption was set using <code>knitr::kable()</code> as well.</li>
+<li>Note that the <code>results: asis</code> chunk option is <em>essential</em> to this displaying correctly.</li>
+</ul>
+</section>
+<section id="copied-into-a-quarto-document" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="copied-into-a-quarto-document"><span class="header-section-number">15.2.2</span> Copied into a Quarto document</h3>
+<p>I find getting labels and cross-referencing to work well when directly computing the table is a bit tricky.</p>
+<p>So, I prefer to do the following:</p>
 <ol type="1">
-<li><p>Option One:</p>
-<p>Firstly, we can choose to call the function with the <code>=</code> operator. Then <code>f(input = 3)</code> will return <code>3</code> as expected. However, the line <code>print(input)</code> will cause an error. This is because <code>=</code> only allocated as a local variable.</p></li>
+<li>Run the code to compute the table in the <code>R</code> console.</li>
 </ol>
+<p>In the example above, that means running the <code>kable()</code> call. Depending on your desired output format, you will get Markdown or LaTeX output (typically). Here is what the Markdown output looks like, running the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  localVar <span class="ot">&lt;-</span> input</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(localVar)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(penguin_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">f</span>(<span class="at">input =</span> <span class="dv">3</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<pre class="plaintext"><code>|Species   |   FL   |   BM    | Count |
+|:---------|:------:|:-------:|:-----:|
+|Adelie    | 189.95 | 3700.66 |  152  |
+|Chinstrap | 195.82 | 3733.09 |  68   |
+|Gentoo    | 217.19 | 5076.02 |  124  |</code></pre>
 <ol start="2" type="1">
-<li><p>Option Two:</p>
-<p>Alternatively, we could call the function as follows. This will return the same value for the function call <strong>AND</strong> allow the print command. This is because <code>input</code> is assigned as a global variable in the function call.</p></li>
+<li><p>Copy the output into your Quarto document.</p></li>
+<li><p>If you are working within Quarto, then you can use the Quarto cross-referencing syntax (details <a href="https://quarto.org/docs/authoring/cross-references.html">here</a>), which looks like this:</p></li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">f</span>(input <span class="ot">&lt;-</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>::: {#tbl-summary}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>Species   <span class="pp">|</span>   FL   <span class="pp">|</span>   BM    <span class="pp">|</span> Count <span class="pp">|</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---------|:------:|:-------:|:-----:|</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>Adelie    <span class="pp">|</span> 189.95 <span class="pp">|</span> 3700.66 <span class="pp">|</span>  152  <span class="pp">|</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>Chinstrap <span class="pp">|</span> 195.82 <span class="pp">|</span> 3733.09 <span class="pp">|</span>  68   <span class="pp">|</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>Gentoo    <span class="pp">|</span> 217.19 <span class="pp">|</span> 5076.02 <span class="pp">|</span>  124  <span class="pp">|</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and produces this, which can be cross referenced (<code>@tbl-summary</code> produces <a href="#tbl-summary" class="quarto-xref">Table&nbsp;<span>15.1</span></a>):</p>
+<div id="tbl-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;15.1: Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).
+</figcaption>
+<div aria-describedby="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species</th>
+<th style="text-align: center;">FL</th>
+<th style="text-align: center;">BM</th>
+<th style="text-align: center;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: center;">189.95</td>
+<td style="text-align: center;">3700.66</td>
+<td style="text-align: center;">152</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: center;">195.82</td>
+<td style="text-align: center;">3733.09</td>
+<td style="text-align: center;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: center;">217.19</td>
+<td style="text-align: center;">5076.02</td>
+<td style="text-align: center;">124</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+</figure>
 </div>
-</div>
-<p><strong>Option one is best practice for coding</strong>. Using option 2 can make code fairly difficult to keep track of. Consider the following example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(a){</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> a <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(a)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(a <span class="ot">&lt;-</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>The function will return a value of <code>6</code> as expected, but the global variable will still be stored as <code>2</code>. This is because any changes made to the variable in the function are actually made to a local variable copy of <code>a</code> and not on <code>a</code> itself.</p>
-</section>
-<section id="what-about-the---operator" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="what-about-the---operator"><span class="header-section-number">8.1.3</span> What about the <code>&lt;&lt;-</code> operator?</h3>
-<p>Clearly, when using functions, one needs to be careful of global and local variables. Essentially, when a function is called, any variable is either a global variable (defined outside the function and visible to everything) or a locally defined variable (in the sense that we define a new variable inside the function).</p>
-<p>Unintended issues can arise however, when trying to make changes to one of these global variables; only a copy of the actual global variable is used inside of a function scope. The operator <code>&lt;&lt;-</code> can get around this.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  globalVariable <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(globalVariable)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>(<span class="fu">g</span>())</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(globalVariable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This code fails because <code>globalVariable</code> is only a local variable definition inside the function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  globalVariable <span class="ot">&lt;&lt;-</span> <span class="dv">1</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(globalVariable)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>(<span class="fu">g</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(globalVariable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>The <code>&lt;&lt;-</code> operator is a global assignment operator, bypassing the locality of function, as seen in the following extract.</p>
-<p>Note: it can be beneficial to provide a small description of the functions you write as follows.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>aVariable <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(b){</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A function to help show local variables are separate from global variables</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Args:</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   b (double) - multiplies 'aVariable'</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return:</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   (double) - updated 'aVariable'??</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  aVariable <span class="ot">&lt;-</span> aVariable <span class="sc">*</span> b</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(aVariable)</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>(<span class="fu">h</span>(<span class="at">b =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 300</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(aVariable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 100</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(b){</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  aVariable <span class="ot">&lt;&lt;-</span> aVariable <span class="sc">*</span> b</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(aVariable)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>(<span class="fu">h</span>(<span class="at">b =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 300</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(aVariable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 300</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="tldr" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="tldr"><span class="header-section-number">8.2</span> TL;DR</h2>
-<ol type="1">
-<li>Use <code>&lt;-</code> for normal variable assignment</li>
-<li>Use <code>=</code> when making a function call, for example: <code>f(a = 3)</code>.</li>
-<li>Avoid <code>&lt;&lt;-</code> unless you are very sure!</li>
+<ul>
+<li>Key elements of Quarto table cross-referencing syntax:
+<ul>
+<li>Opening line:
+<ul>
+<li>Begin with <code>:::</code></li>
+<li>Open curly braces</li>
+<li>Write label:
+<ul>
+<li>Demarcate it with <code>#</code></li>
+<li>No spaces between <code>#</code> and label</li>
+<li>Label begins with <code>tbl-</code>.</li>
+<li>Write remainder of label</li>
+<li>Close curly braces</li>
+</ul></li>
+</ul></li>
+<li>Place table content (copied from previous line)</li>
+<li>Write caption</li>
+<li>Close with <code>:::</code></li>
+<li>To cross-reference, write <code>@&lt;label&gt;</code> where <code>&lt;label&gt;</code> is the part immediately following the <code>#</code> in the opening of the <code>:::</code> block and <em>includes</em> the <code>tbl-</code> prefix.</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Reference the table using the syntax <code>@&lt;label&gt;</code>, where <code>&lt;label&gt;</code> is the part immediately following the <code>#</code> in the opening of the <code>:::</code> block: <code>@tbl-summary</code> produces <a href="#tbl-summary" class="quarto-xref">Table&nbsp;<span>15.1</span></a>.</li>
 </ol>
+</section>
+<section id="latex" class="level3" data-number="15.2.3">
+<h3 data-number="15.2.3" class="anchored" data-anchor-id="latex"><span class="header-section-number">15.2.3</span> <code>LaTeX</code></h3>
+<p>Using <code>LaTeX</code>: If you are using <code>LaTex</code> (e.g.&nbsp;working in OverLeaf, which you cover in the <code>LaTeX</code> lecture later this week), then you would run the <code>knitr::kable</code> command with <code>format = "latex"</code>. This will give you a LaTeX table that you can copy into your document. You can then use <code>LaTeX</code>-specific labelling and cross-referencing syntax to reference the table (not covered here).</p>
+<p>But the basic idea of using <code>R</code> to generate the table contents and overall styling, and then using your document format’s specific syntax for labelling and cross-referencing, remains the same.</p>
+<p>This approach is <em>much</em> easier than writing out the contents of the table by hand (though manual editing may still be necessary for fine-tuning, e.g.&nbsp;for formatting).</p>
+<p>There are many other <code>R</code> packages than <code>knitr</code> with the <code>kable</code> function that can generate formatted tables from <code>R</code> objects (e.g.&nbsp;<code>pandoc</code>, <code>gt</code>), so you can choose the one that best fits your needs. <code>knitr::kable</code>’s advantage is simplicity.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -936,13 +948,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./day2.html" class="pagination-link" aria-label="Day 2: More on R Programming">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Day 2: More on R Programming</span>
+      <a href="./ggplot2.html" class="pagination-link" aria-label="Figures with GGPlot">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Figures with GGPlot</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./logic.html" class="pagination-link" aria-label="Logical Operators">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Logical Operators</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prac-day-five.html" class="pagination-link" aria-label="Practical Day Five">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Practical Day Five</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

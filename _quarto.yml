@@ -20,7 +20,11 @@ project:
   - day4.qmd
   - tidy1.qmd
   - tidy2.qmd
-  - pard-day-four.qmd
+  - prac-day-four.qmd
+  - day5.qmd
+  - ggplot2.qmd
+  - tables.qmd
+  - prac-day-five.qmd
   output-dir: docs
 book:
   title: Statistical Computing
@@ -54,6 +58,11 @@ book:
     - tidy1.qmd
     - tidy2.qmd
     - prac-day-four.qmd
+  - part: day5.qmd
+    chapters:
+    - ggplot2.qmd
+    - tables.qmd
+    - prac-day-five.qmd
 format:
   html:
     theme: cosmo
