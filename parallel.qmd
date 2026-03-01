@@ -1,0 +1,129 @@
+# Introduction
+
+Imagine that you have to write 100 different emails. You could try and write all of the emails yourself, but these are long emails and you have a tight deadline. Instead you hire 4 assistants to help you write the emails; sharing the load and increasing task efficiency.
+
+The same idea exists in computing; splitting a task into smaller pieces and performing them simultaneously to improve efficiency. This is called Parallel Computing.
+
+# Why Use Parallel Computing?
+
+In R, many processes such as simulations, data processing, and modeling can take a long time when executed sequentially. Parallel computing can help by:
+
+-   Reducing execution time
+-   Handling large datasets
+-   Running multiple tasks at once
+
+The types of tasks which are compatible with parallel computing include
+
+-   Task Parallelism: Different tasks run simultaneously.
+-   Data Parallelism: The same task runs on different subsets of data.
+-   Embarrassingly Parallel Tasks: Independent tasks that require no communication (e.g., bootstrapping, Monte Carlo).
+
+# Parallel Computing in R
+
+R provides several ways to perform parallel computation:
+
+-   `parallel` package (built into R): Provides `mclapply()`, `parLapply()`, `parApply()`, and more.
+-   `foreach` package: Allows flexible iteration with `%dopar%`.
+-   `doParallel` package: Used with `foreach` to enable parallel execution.
+
+### Example: Sequential vs. Parallel Execution
+
+#### Sequential Execution with `lapply()`
+
+```{r}
+aComplexFunction <- function(x) {
+  Sys.sleep(1)
+  return(sqrt(x))
+}  
+system.time({
+  result <- lapply(1:5, aComplexFunction)
+})
+```
+
+#### Sequential Executions with `foreach`
+
+```{r}
+library(foreach)
+
+system.time({
+  result <- foreach(i = 1:5, .combine = c) %do% {
+    aComplexFunction(i)
+  }
+})
+```
+
+#### Parallel Execution with `foreach` and `doParallel`
+
+```{r}
+library(doParallel)
+
+cl <- makeCluster(3)
+registerDoParallel(cl)
+
+system.time({
+  result <- foreach(i = 1:5, .combine = c) %dopar% {
+    aComplexFunction(i)
+  }
+})
+
+stopCluster(cl)
+```
+
+# Setup Costs of Parallel Computing
+
+In our analogy of writing emails, whilst it seems like a trivial decision to hire assistants to share the writing load; in reality, it may take even more time to complete the task that way. Whilst the writing process will be quicker, large overheads exist such as the hiring process, explaining the problem, and checking the emails at the end. If a single email does not take a significant amount of time to write, then it could be quicker to just write all of the emails yourself.
+
+Parallel computing shares similar overheads which need to be considered. As a result, parallel computing is a powerful tool for efficiency; however, it should only be used when the sub-tasks are computationally heavy. This will ensure that the time taken to setup the overheads is outweighed by the faster computation time.
+
+Below we outline some of the setup overheads for parallel computing.
+
+### Data Copying Overhead
+
+If the sub-tasks require access to a shared dataset, then sometimes each worker process needs access to the data. On Windows, R copies the data to each worker, which can be memory-intensive. Other platforms can offer forking which prevents this need for data copies.
+
+```{r}
+some_data_which_is_shared <- numeric(6L)
+my_data <- some_data_which_is_shared
+  
+cl <- makeCluster(2)
+clusterExport(cl, "my_data")  # Copying data to workers
+stopCluster(cl)
+```
+
+### Cluster Initialization Time
+
+Setting up worker processes takes time, so for small tasks, the overhead may outweigh the benefits.
+
+```{r}
+system.time({
+  cl <- makeCluster(2)
+  stopCluster(cl)
+})
+```
+
+### Managing Workload Distribution
+
+Not all tasks are easy to split evenly, and improper load balancing can lead to idle cores.
+
+# Other Issues to Consider
+
+-   Seeds in parallel will be inconsistent. See functions such as `irnorm` as a solution.
+-   Global variables.
+
+```{r}
+counter <- 0  # Global variable
+hi <- function(i) {
+  counter <<- counter + 1  # This modification won't work properly
+  return(counter)
+}
+
+cl <- makeCluster(3)
+registerDoParallel(cl)
+
+result <- foreach(i = 1:10, .combine = c) %dopar%{
+  hi(i)
+}
+
+print(result)
+print(counter)
+```

@@ -25,6 +25,9 @@ project:
   - ggplot2.qmd
   - tables.qmd
   - prac-day-five.qmd
+  - parallelDay.qmd
+  - parallel.qmd
+  - prac-parallel.qmd
   output-dir: docs
 book:
   title: Statistical Computing
@@ -63,6 +66,10 @@ book:
     - ggplot2.qmd
     - tables.qmd
     - prac-day-five.qmd
+  - part: parallelDay.qmd
+    chapters:
+    - parallel.qmd
+    - prac-parallel.qmd
 format:
   html:
     theme: cosmo
