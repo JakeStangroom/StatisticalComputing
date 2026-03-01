@@ -1,0 +1,1060 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistical Computing",
+    "section": "",
+    "text": "Welcome\nWe have a lot to cover in this bootcamp-style course. By the end, you should be able to write acceptable assignments faster. One of the biggest time sinks in Honours statistics is the process of writing up your analyses, which is often slowed down by two major issues:\nOur goal is to address both of these challenges. This course focuses on statistical computing, so many tasks will be statistical in nature.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#what-about-marks",
+    "href": "index.html#what-about-marks",
+    "title": "Statistical Computing",
+    "section": "What About Marks?",
+    "text": "What About Marks?\n\nPeer-reviewed assessment:\n\nDates: 9 February, 23 February\nFormat:\n\nCollate selected practical work from the first two weeks into a Quarto project, with the code available on GitHub (Quarto and GitHub to be explained later).\nYou will each anonymously mark one other person’s work.\nWe will provide a marking rubric.\n\n\nPractical tests:\n\nTest One: 12 February, 9–11 AM.\nTest Two: 6 March, 9-11 AM.\n\nLab Exam\n\nJune\n\n\nThese notes are adapted from those written by Miguel Rodo and still make some references to optional videos produced by him.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "day1.html",
+    "href": "day1.html",
+    "title": "Day One: Projects in R",
+    "section": "",
+    "text": "What Will We Cover by the End of Day One?",
+    "crumbs": [
+      "Day One: Projects in R"
+    ]
+  },
+  {
+    "objectID": "day1.html#what-will-we-cover-by-the-end-of-day-one",
+    "href": "day1.html#what-will-we-cover-by-the-end-of-day-one",
+    "title": "Day One: Projects in R",
+    "section": "",
+    "text": "Setting up R and RStudio.\nWorking with vectors, matrices, and data frames.\nDiscussing how to structure projects and organize files.\nInstalling Git, setting up a GitHub account, creating a local Git repository, and connecting it to RStudio.\nLearning Quarto and Markdown to write reports.",
+    "crumbs": [
+      "Day One: Projects in R"
+    ]
+  },
+  {
+    "objectID": "day1.html#what-is-the-outcome-for-today",
+    "href": "day1.html#what-is-the-outcome-for-today",
+    "title": "Day One: Projects in R",
+    "section": "What is the outcome for today?",
+    "text": "What is the outcome for today?\nAnswer the questions in Practical One, and place the answers into its own qmd file into a Quarto project on GitHub.\nNow, let’s get started.",
+    "crumbs": [
+      "Day One: Projects in R"
+    ]
+  },
+  {
+    "objectID": "rstudio.html",
+    "href": "rstudio.html",
+    "title": "1  Setting Up Your Computer",
+    "section": "",
+    "text": "1.1 Configure RStudio Settings\nBefore diving into R, make sure your system is set up properly:\nRefer to the video rstudio_settings.mp4 for a visual guide. Follow these steps to configure your RStudio settings:",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#configure-rstudio-settings",
+    "href": "rstudio.html#configure-rstudio-settings",
+    "title": "1  Setting Up Your Computer",
+    "section": "",
+    "text": "1.1.1 1. General Settings\nNavigate to Tools → Global Options → General.\n\nWorkspace subsection:\n\nUncheck Restore .RData into workspace at startup\nPrevents old objects from automatically loading when opening RStudio, ensuring a clean and reproducible environment.\nSet Save workspace to .RData on exit to Never\nThis avoids saving hidden dependencies that can make your scripts less reproducible.\n\n\n\n\n1.1.2 2. Code Editing Settings\nGo to Tools → Global Options → Code → Editing.\n\nEnable “Use Native Pipe Operator (|&gt;)”:\nSince you’ll be using a later version of R, this setting improves readability and reduces dependency on packages like {magrittr}.\nEnable “Soft-wrap R source files”:\nThis ensures that long lines wrap within the editor, so you don’t have to scroll horizontally even if the code line is long.\n\n\n\n1.1.3 3. Code Display Settings\nUnder Tools → Global Options → Code → Display:\n\nEnable “Rainbow Parentheses”:\nDisplays matching parentheses in different colors, making nested expressions easier to read and reducing errors.\n\n\n\n1.1.4 4. Appearance Settings\nFinally, go to Tools → Global Options → Appearance.\n\nEditor Font: Change to a monospaced font (for example, JetBrains Mono). A monospaced font ensures each character takes up the same width, improving alignment and readability.\nEditor Theme: Choose a dark theme instead of the default light theme to reduce eye strain. Good options include:\n\nCobalt (recommended)\nMonokai\nSolarized Dark\nTwilight\n\n\nThese settings help improve usability, maintainability, and comfort while coding in RStudio.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#script-editor-top-left",
+    "href": "rstudio.html#script-editor-top-left",
+    "title": "1  Setting Up Your Computer",
+    "section": "2.1 1. Script Editor (Top Left)",
+    "text": "2.1 1. Script Editor (Top Left)\nThis is where you write and edit your scripts (files ending in .R, .Rmd, or .qmd). A script is essentially a record of instructions that R executes. Use Ctrl + Enter (Windows/Linux) or Cmd + Enter (Mac) to run code from the script; the command output will appear in the Console.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#console-and-terminal-bottom-left",
+    "href": "rstudio.html#console-and-terminal-bottom-left",
+    "title": "1  Setting Up Your Computer",
+    "section": "2.2 2. Console and Terminal (Bottom Left)",
+    "text": "2.2 2. Console and Terminal (Bottom Left)\n\nConsole:\nWhere R executes commands. You can run code from your script or type directly into the Console to test ideas.\nTerminal:\nAdjacent to the Console, this pane runs system shell commands. It shares the same working directory as R but interprets commands using your system shell (PowerShell on Windows, Bash on Linux, or Zsh/Bash on Mac).",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#environment-and-history-top-right",
+    "href": "rstudio.html#environment-and-history-top-right",
+    "title": "1  Setting Up Your Computer",
+    "section": "2.3 3. Environment and History (Top Right)",
+    "text": "2.3 3. Environment and History (Top Right)\n\nEnvironment Tab:\nLists all objects (variables, data, functions) currently loaded in your R session.\nHistory Tab:\nDisplays a record of all commands you have executed.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#files-plots-packages-and-help-bottom-right",
+    "href": "rstudio.html#files-plots-packages-and-help-bottom-right",
+    "title": "1  Setting Up Your Computer",
+    "section": "2.4 4. Files, Plots, Packages, and Help (Bottom Right)",
+    "text": "2.4 4. Files, Plots, Packages, and Help (Bottom Right)\n\nFiles Tab:\nShows files and folders in your current working directory.\nPlots Tab:\nDisplays any generated plots; you can zoom in, export (to PNG, PDF, JPEG, etc.), and clear old plots.\nPackages Tab:\nLists installed R packages and offers management options.\nHelp Tab:\nProvides documentation for functions and packages. You can search for help topics here or use the ?function_name command in the Console.\n\nThis interface layout makes it easy to write, test, and manage your R code.\n\ninstalling source package ‘httr2’ …\n\n** package ‘httr2’ successfully unpacked and MD5 sums checked ** using staged installation\nWarning in system(“sh ./configure.win”) : ‘sh’ not found\nERROR: configuration failed for package ‘httr2’\n\nremoving ‘C:/Users/Wang/AppData/Local/R/win-Library/4.2/httr2’ Warning in install.packages :\n\n```",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#footnotes",
+    "href": "rstudio.html#footnotes",
+    "title": "1  Setting Up Your Computer",
+    "section": "",
+    "text": "The packages we ask you to install are usually easy to install, so if you have errors like this, it might be because your R is out of date:↩︎",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up Your Computer</span>"
+    ]
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "2  Tackling Projects in RStudio",
+    "section": "",
+    "text": "2.1 Using RStudio Projects\nRefer to the video projects.mp4 for an overview of working on projects. Here are some principles for keeping your work organized and reproducible.\nBenefits:",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tackling Projects in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "projects.html#using-rstudio-projects",
+    "href": "projects.html#using-rstudio-projects",
+    "title": "2  Tackling Projects in RStudio",
+    "section": "",
+    "text": "Click on New Project in the top-right corner of RStudio to create an RStudio Project.\nThis creates a directory containing all the code, data, and outputs for your analysis.\nWhen you open a project, the working directory is automatically set to that project folder.\n\n\n\nConsistent relative paths: Avoids issues with absolute paths that vary across devices.\nEasier collaboration: Consistent paths make sharing scripts seamless.\nQuick access: Recently opened projects are available in the top-right dropdown menu.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tackling Projects in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "projects.html#organizing-project-files-and-directories",
+    "href": "projects.html#organizing-project-files-and-directories",
+    "title": "2  Tackling Projects in RStudio",
+    "section": "2.2 Organizing Project Files and Directories",
+    "text": "2.2 Organizing Project Files and Directories\nA well-structured project prevents clutter and helps you locate files easily. A common folder structure might include:\n\n\n\n\n\n\n\nFolder Name\nPurpose\n\n\n\n\n_raw_data/\nStores unmodified datasets\n\n\n_output/\nContains figures, reports, and final documents\n\n\n_tmp/\nHolds intermediate files not intended for sharing\n\n\n_reference/\nKeeps supplementary materials such as papers and assignment details\n\n\n\nNote: Keep scripts (e.g., .R, .Rmd, .qmd) in the main project directory to avoid issues with relative paths.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tackling Projects in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "projects.html#structuring-r-scripts-for-readability",
+    "href": "projects.html#structuring-r-scripts-for-readability",
+    "title": "2  Tackling Projects in RStudio",
+    "section": "2.3 Structuring R Scripts for Readability",
+    "text": "2.3 Structuring R Scripts for Readability\nGood script structure improves maintainability and reduces errors. Consider these guidelines:\n\nOrganize Scripts Logically\n\nBegin with a setup section (load libraries and data).\nFollow with analysis and processing steps, grouped logically.\n\nImprove Readability\n\nKeep lines at a reasonable length (even with word wrapping).\nUse informative variable names instead of generic ones like x or y.\nAvoid reusing variable names to prevent confusion.\n\nUse Section Headings\n\nSeparate your code into sections with comment dividers (e.g., # ---- Setup ----).\nRStudio recognizes these dividers and allows for code folding.\n\n\nExample of a Structured Script:\n# ============================\n# Setup\n# ============================\nlibrary(ggplot2)              # Load required packages\ndata_raw &lt;- read.csv(\"_raw_data/air_pollution.csv\")  # Load dataset\n\n# ============================\n# Data Cleaning\n# ============================\ndata_cleaned &lt;- data_raw |&gt;\n  dplyr::filter(!is.na(pm2.5)) |&gt;\n  dplyr::mutate(log_pm = log(pm2.5))\n\n# ============================\n# Visualization\n# ============================\nggplot(data_cleaned, aes(x = temperature, y = log_pm)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n# ============================\n# Model Fitting\n# ============================\nmodel &lt;- lm(log_pm ~ temperature + humidity, data = data_cleaned)",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tackling Projects in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "projects.html#summary-of-best-practices",
+    "href": "projects.html#summary-of-best-practices",
+    "title": "2  Tackling Projects in RStudio",
+    "section": "2.4 Summary of Best Practices",
+    "text": "2.4 Summary of Best Practices\n\nUse RStudio Projects for consistent working directories and collaboration.\nOrganize files into clearly named directories to avoid clutter.\nStructure your R scripts with a logical order, clear variable names, and well-defined sections.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tackling Projects in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "3  Literate Programming",
+    "section": "",
+    "text": "3.1 What is Literate Programming?\nSee the video quarto.mp4 for a visual explanation of this document.\nLIterate programming combines code (e.g., R or Python) with text to create documents that are both readable and executable. The text itself is written in Markdown, a lightweight formatting language that allows us to structure documents with headings, bullet points, bold and italic text, and more.\nTwo key tools for literate programming in R are R Markdown and Quarto.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Literate Programming</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#r-markdown",
+    "href": "quarto.html#r-markdown",
+    "title": "3  Literate Programming",
+    "section": "3.2 R Markdown",
+    "text": "3.2 R Markdown\n\n3.2.1 What is R Markdown?\nR Markdown was the original tool for embedding code within documents. It allows users to write reports, create presentations, and generate formatted documents that include both text and code outputs.\n\n\n3.2.2 Structure of an R Markdown File\nAn R Markdown file (.Rmd) consists of three main components:\n\n3.2.2.1 YAML Front Matter\nThe YAML front matter is the metadata at the top of the document. It controls the output format (e.g., HTML, PDF, Word).\nExample:\n---\ntitle: \"My Report\"\noutput: html_document\n---\nThis tells R Markdown to generate an HTML document. Other options include pdf_document and word_document.\n\n\n3.2.2.2 Code Chunks\nCode chunks are sections of executable code, enclosed by triple backticks (```) with a specified language. In our case, it will be R:\n\n\nsummary(cars)\n\n\n\nBackticks (`) are usually found next to the number 1 key on the keyboard.\nBy default, all code in chunks is executed when the document is rendered.\n\nChunk Options:\n- echo = FALSE → Hides the code but still runs it.\n- echo = TRUE → Displays both the code and its output.\n- Other options can control figure size, message display, and more.\nExample:\n\n\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\n\nThe summary will appear in the final document, but the code itself won’t be displayed.\n\n\n3.2.2.3 Markdown Formatting\nMarkdown is used for structuring text.\n\nHeadings: Use # for headings (## for subheadings, ### for deeper levels).\n\nBullet points: Use - or *.\n\nNumbered lists: Use 1., 2., etc.\n\nBold text: **bold** → bold\n\nItalic text: *italic* → italic\n\n\n\n\n3.2.3 Output\nR Markdown can embed plots, tables, and formatted text into a document. When you include code that generates a plot, the plot will be displayed in the final output.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Literate Programming</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#quarto",
+    "href": "quarto.html#quarto",
+    "title": "3  Literate Programming",
+    "section": "3.3 Quarto",
+    "text": "3.3 Quarto\n\n3.3.1 What is Quarto?\nQuarto is the successor to R Markdown. It is very similar but:\n- Has a different YAML front matter structure.\n- Supports more programming languages (via Jupyter).\n- Provides a more unified workflow for reports, websites, and books.\n\n\n3.3.2 Differences in YAML\nInstead of specifying output: html_document like in R Markdown, Quarto uses:\n---\ntitle: \"My Report\"\nformat: html\n---\nQuarto uses format instead of output, making it more flexible.\n\n\n3.3.3 Code Chunks in Quarto\nQuarto code chunks function similarly to R Markdown, but chunk options can be specified in a cleaner way:\n\n```{r}\n#| eval: false\nsummary(cars)\n```\n\nUsing #| option: value inside the chunk makes options easier to read and manage.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Literate Programming</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#quarto-projects",
+    "href": "quarto.html#quarto-projects",
+    "title": "3  Literate Programming",
+    "section": "3.4 Quarto Projects",
+    "text": "3.4 Quarto Projects\n\n3.4.1 Why Use Quarto Projects?\nOne limitation of R Markdown was that while you could generate individual reports (.html, .pdf, etc.), managing multiple files in a project (e.g., a website) required extra tools like bookdown.\nQuarto solves this by providing built-in support for project structures.\n\n\n3.4.2 Starting a Quarto Project\n\n3.4.2.1 Via RStudio GUI\nUnfortunately, in RStudio one cannot start a Quart project via the New File menu. Instead, you have to start a new RStudio project entirely. The change is that you must select Quarto Project from the New Project menu.\n\n\n3.4.2.2 By adding a quarto.yml file\nAlternatively, what you can do is simply add a _quarto.yml file. Here is an example _quarto.yml file:\nproject:\n  type: book\n  render:\n  - index.qmd\n  output-dir: docs\nbook:\n  title: Statistical Computing\n  sidebar:\n    border: true\n    background: light\n    position: right\n  navbar:\n    search: true\n    background: light\n  chapters:\n  - index.qmd\nformat:\n  html:\n    theme: cosmo\n    toc: true\n    toc-depth: 3\n    toc-location: left\nA brief explanation of this file:\n\nindex.qmd is the “base” qmd. It is the first file that will be rendered. Always include it.\n\nIf you want to include other files, then specify them in the chapters and render keys.\n\noutput-dir specifies where the output will be saved. In this case, it will be saved in a docs folder.\nbook specifies the title of the book, the sidebar, the navbar, and the chapters.\nformat specifies specific formatting options for the html outputL\n\nThe theme defines the overall appearance of the website.\ntoc specifies whether a table of contents should be generated, and the toc-depth specifies how many levels of headings should be included.\n\n\n\n\n\n3.4.3 Defining a Quarto Project\nA Quarto project is defined by a quarto.yml file, which specifies how multiple .qmd files should be compiled together.\nExample of a quarto.yml file for a website:\nproject:\n  type: website\n\nformat:\n  html:\n    toc: true\n    toc-depth: 3\nThis tells Quarto:\n- The project is a website. .\n- A table of contents should be generated (toc: true) for headings up to level 3 (toc-depth: 3).\n\n\n3.4.4 Website vs. Book\n\nWebsite (type: website)\n\nOnly outputs HTML.\n\nHas a navigation bar linking different pages.\n\n\nBook (type: book)\n\nCan output HTML, PDF, or Word.\n\nUses a chapters: key to define sections.\n\n\nExample quarto.yml for a book:\nproject:\n  type: book\n\nbook:\n  chapters:\n    - index.qmd\n    - intro.qmd\n    - analysis.qmd\n\nformat:\n  pdf: \n    documentclass: book\nHere:\n- The chapters define the book structure.\n- The format section customizes the outputs.\n\n\n3.4.5 Rendering a Quarto Project\nTo build the entire project, use the quarto R package:\ninstall.packages(\"quarto\")\nquarto::quarto_render()\n\nThis renders all files in the project according to quarto.yml.\n\nFor websites, output is saved in _site/.\n\nFor books, output is saved in _book/.\n\n\n\n3.4.6 Important Notes\n\nTo start a new Quarto project, go to RStudio → New Project → Quarto Project.\n\nIf creating a website, ensure you have an index.qmd file—websites require an index.html as the main entry point.\nClicking the Knit button in RStudio will render the current .qmd file, but quarto::quarto_render() is needed for the entire project.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Literate Programming</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#summary",
+    "href": "quarto.html#summary",
+    "title": "3  Literate Programming",
+    "section": "3.5 Summary",
+    "text": "3.5 Summary\n\nR Markdown is an older tool for combining code and text, using .Rmd files.\n\nQuarto is the modern alternative, offering more flexibility and better multi-file management.\n\nQuarto Projects allow multiple .qmd files to be rendered together, creating websites or books.\n\nBy using Quarto, we can write reports, build websites, and generate books—all from the same toolset!",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Literate Programming</span>"
+    ]
+  },
+  {
+    "objectID": "git.html",
+    "href": "git.html",
+    "title": "4  Git and GitHub",
+    "section": "",
+    "text": "4.1 Prerequites",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "git.html#prerequites",
+    "href": "git.html#prerequites",
+    "title": "4  Git and GitHub",
+    "section": "",
+    "text": "Create a GitHub account: GitHub.\nInstall Git: Git.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "git.html#setting-up-git-and-github",
+    "href": "git.html#setting-up-git-and-github",
+    "title": "4  Git and GitHub",
+    "section": "4.2 Setting Up Git and GitHub",
+    "text": "4.2 Setting Up Git and GitHub\nThere are two main approaches for setting up a new R project that you want on GitHub:\n\nApproach 1: Create project using Git, then download it to your machine\nApproach 2: Begin with pre-existing RStudio project, and then connect to GitHub\n\nThe first approach tends to be easier.\n\n4.2.1 Why care about Git?\n\nYou will submit assignments to GitHub for peer-marking.\nIndustry uses Git for everything.\n\nAt minimum, Git provides you with a highly improved method of saving your work. With Git, you will never name a file final_version_72 again! At its core, Git is a version control of documents which allows you to keep track of changes made and revert to previous changes if need be. Furthermore, it allows for collaboration without having to send updated versions to your friend in zip files over and over. There is an abundance of Git-jargon; you only need these few words to start:\n\nRepository (pronounced Repo) : The folder where we store everything we want to track.\nClone: Copy another repo so you can plagiarize as your own\nFork: Collaborate on someone else’s repo\nCommit: Create a checkpoint in the repo, locally\nPull: Update the repo with any changes not already on your version\nPush: Make your checkpoint (commit) visible globally\n\n\n\n4.2.2 Approach 1: Create project using Git, then download it to your machine\nWithin here, there are two approaches. One of them uses GitHub Desktop, a standalone program, and the other uses github.com itself, the website.\nWe strongly suggest using GitHub Desktop, as it will make managing your Git repositories easier after setup.\n\n4.2.2.1 Use GitHub Desktop\nGitHub Desktop is a standalone program for working with Git and GitHub. It is very beginner-friendly. See this for more.\nHere is a video describing how to use it. It breaks down the basics, but contains a little more information than you need, so you can stop when you are set up.\n\n\n4.2.2.2 Use GitHub\nYou can also create a new repo directly on GitHub, and then clone it (Git-speak for download it). Here are the instructions: New project, GitHub first.\n\n\n\n4.2.3 Approach 2: Begin with RStudio project on your machine, and then connect it to GitHub\nSee the video git.mp4 for this process illustrated.\nIn RStudio, open your project.\nThen, run the following code.\n\n4.2.3.1 Install usethis\nFirstly, ensure usethis is installed:\nif (!requireNamespace(\"usethis\", quietly = TRUE)) {\n  install.packages(\"usethis\")\n}\n\n\n4.2.3.2 Introduce yourself to Git\nThen, if you have not set Git up before, you’ll need to run the following. Note that by “not set up Git”, I do not mean whether you’ve installed Git, but rather whether you’ve given Git basic authorship information. If you’re not sure, you can run the following:\ngert::git_config_global()\nI am not exactly sure what it looks like if you’ve not set up Git authorship information, but the key thing is that it will not have a row where the first column is user.name and the second column is your name, and a row where the first column is user.email and the second column is your email address.\nIf you can see you’ve not set user.name and user.email, then run the following, swopping NULL with your name and email address:\n# set your username and your email address\nusername &lt;- NULL  # replace NULL with e.g. \"Miguel Rodo\" (be sure to include the quotes)\nemail &lt;- NULL # replace NULL with e.g. \"miguel.rodo@uct.ac.za\"\nstopifnot(!is.null(username)) # just checking you set this\nstopifnot(!is.null(email))\ngert::git_config_global_set(\"user.name\",  username)\ngert::git_config_global_set(\"user.email\", email)\n\n\n4.2.3.3 Initialise Git for the project\nFinally, you are ready to initialise git for that project:\nusethis::use_git()\nWhen it asks you whether you want to commit the extra files, say yes. Be aware that you don’t type “Absolutely” or “Definitely” or whatever corresponds to “yes”, you just type the number that corresponds to yes.\nAfter running the above, to get the Git pane to appear in the top right corner (alongside Environment and History), you need to close and re-open RStudio.\nYou will not need to install usethis and set Git authorship information for each project, but you will need to initialise Git for each project.\n\n\n4.2.3.4 Connect Git to GitHub\nRun the following code:\nusethis::create_github_token()\nName the token, set the expiry date and click on Create. Then copy the token (it looks like ghp_akerjlwk4j5qlk45j).\nThen, run the following code:\ngitcreds::gitcreds_set()\nand paste your token.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "git.html#further-resources",
+    "href": "git.html#further-resources",
+    "title": "4  Git and GitHub",
+    "section": "4.3 Further resources",
+    "text": "4.3 Further resources\n\nHappy Git with R:\n\nSet up guidance:\n\nWhy Git? Why GitHub?\nRegister a GitHub account\nInstall Git\nIntroduce Yourself to Git\nPersonal Access tokens for HTTPS\n\nDescription of how Git works and how to use it:\n\nSome Git Basics, and then the next few sections",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "projrsimple.html",
+    "href": "projrsimple.html",
+    "title": "5  projrsimple",
+    "section": "",
+    "text": "5.1 Installation\nI’ve written a simple package to help you:\nThere are only two functions in this package:\nWhat problems does it help solve?\nYou can install the package from GitHub using the following code:",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`projrsimple`</span>"
+    ]
+  },
+  {
+    "objectID": "projrsimple.html#installation",
+    "href": "projrsimple.html#installation",
+    "title": "5  projrsimple",
+    "section": "",
+    "text": "if (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\")\n}\nremotes::install_github(\"MiguelRodo/projrsimple\")",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`projrsimple`</span>"
+    ]
+  },
+  {
+    "objectID": "projrsimple.html#usage",
+    "href": "projrsimple.html#usage",
+    "title": "5  projrsimple",
+    "section": "5.2 Usage",
+    "text": "5.2 Usage\n\nInstall projrsimple (see above).\nOpen an R session in your project directory (folder where you want to work).\nRun projr_init() to initialise your project (set up Git, GitHub, project directories and a README; simpler than the other instructions for doing this).\nWrite code in scripts (.R, .Rmd, .qmd and/or Quarto projects) in the project directory.\nRun projr_run to execute all scripts. Within those scripts, save outputs to _output directory.\nView rendered documents in the docs directory.\n\nSee the package website for more information: projrsimple.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`projrsimple`</span>"
+    ]
+  },
+  {
+    "objectID": "r.html",
+    "href": "r.html",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "",
+    "text": "6.1 Getting Help\nSee the video r.mp4 for a visual explanation of this document.\nR is a powerful statistical computing language designed for efficient data analysis. It is free, open-source, and operates primarily on objects, which makes it flexible for data manipulation.\nR can be downloaded from CRAN, and RStudio, the recommended integrated development environment (IDE), can be obtained from RStudio. Once installed, open RStudio to explore its interface.\nTo view the help documentation for a function, use either the ? operator or the help() function:",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#getting-help",
+    "href": "r.html#getting-help",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "",
+    "text": "?setwd     # Opens help for setwd()\nhelp(\"lm\")  # Alternative way to get help for lm()",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#libraries",
+    "href": "r.html#libraries",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.2 Libraries",
+    "text": "6.2 Libraries\nLibraries in R provide additional functions and features. For example:\n\nSyntax: library(packageName)\nExample:\nlibrary(ggplot2)  # Loads the ggplot2 package for data visualization",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#reading-in-data",
+    "href": "r.html#reading-in-data",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.3 Reading in Data",
+    "text": "6.3 Reading in Data\nThere are many ways to read data into R. For example, to read data from a CSV file:\ndata &lt;- read.csv(\"data/yourfile.csv\")\nOther packages such as readr, readxl, and openxlsx offer additional methods and options for reading various data formats.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#assigning-values-to-objects",
+    "href": "r.html#assigning-values-to-objects",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.4 Assigning Values to Objects",
+    "text": "6.4 Assigning Values to Objects\nIn R, you assign values to objects using &lt;- (preferred) or =:\nx &lt;- 1               # Assigns the value 1 to x\nmsg &lt;- \"Hello, world!\"  # Assigns a character string to msg\nprint(x)            # Prints the value of x\nTo check an object’s type, use the class() function:\nclass(x)   # Returns \"numeric\"\nclass(msg) # Returns \"character\"",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#basic-computations",
+    "href": "r.html#basic-computations",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.5 Basic Computations",
+    "text": "6.5 Basic Computations\nR supports basic arithmetic following standard mathematical precedence:\n2 + 3 * 5      # Multiplication happens before addition\nlog(10)        # Natural logarithm of 10\n4^2            # Exponentiation: 4 squared\nsqrt(16)       # Square root of 16\nabs(-7)        # Absolute value of -7\nFor integer division and modulus operations:\n15 %/% 4  # Integer division: returns 3\n15 %% 4   # Modulus: returns 3",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#working-with-vectors",
+    "href": "r.html#working-with-vectors",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.6 Working with Vectors",
+    "text": "6.6 Working with Vectors\nVectors store multiple values of the same type and are a fundamental data structure in R:\nx &lt;- c(1, 3, 2, 10, 5)  # Creates a numeric vector\ny &lt;- 1:5                # Creates a sequence from 1 to 5\nMathematical operations can be applied directly to vectors:\ny + 2   # Adds 2 to each element\n2 * y   # Multiplies each element by 2\nx + y   # Adds corresponding elements of x and y\nx * y   # Multiplies corresponding elements of x and y\nx^y     # Raises each element of x to the power given in y\nTo extract specific elements from a vector:\nx[2]      # Returns the second element\nx[3:5]    # Returns elements from index 3 to 5\nx[-2]     # Returns all elements except the second one\nx[x &gt; 3]  # Returns elements greater than 3",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#working-with-character-vectors",
+    "href": "r.html#working-with-character-vectors",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.7 Working with Character Vectors",
+    "text": "6.7 Working with Character Vectors\nCharacter vectors store text data:\ncolours &lt;- c(\"green\", \"blue\", \"orange\", \"yellow\", \"red\")\ncolours[2]  # Returns \"blue\"\ncolours[5]  # Returns \"red\"\nNote that character vectors do not support arithmetic operations.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#matrices",
+    "href": "r.html#matrices",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.8 Matrices",
+    "text": "6.8 Matrices\nMatrices are two-dimensional arrays where all elements are of the same type:\nx &lt;- c(1, 3, 2, 10, 5)\ny &lt;- 1:5\n\nm1 &lt;- cbind(x, y)  # Column-binding creates a matrix\nm2 &lt;- rbind(x, y)  # Row-binding creates a matrix\nMatrix operations include:\nt(m1)       # Transposes the matrix\nm1 + m2     # Adds corresponding elements\nm1 %*% m2   # Matrix multiplication\nsolve(m1)   # Computes the inverse of a square matrix (if possible)",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#lists",
+    "href": "r.html#lists",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.9 Lists",
+    "text": "6.9 Lists\nLists can store elements of different types, making them flexible for various data:\nmy_list &lt;- list(num = 1, vec = c(1, 2, 3), mat = matrix(1:6, nrow = 2))\nAccess elements of a list using the $ operator:\nmy_list$num  # Retrieves the numeric element\nmy_list$vec  # Retrieves the vector\nmy_list$mat  # Retrieves the matrix",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#data-frames",
+    "href": "r.html#data-frames",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.10 Data Frames",
+    "text": "6.10 Data Frames\nData frames store tabular data, similar to spreadsheets:\ndf &lt;- data.frame(name = c(\"Alice\", \"Bob\"), age = c(25, 30))\nExtract data from a data frame:\ndf$name           # Extracts the \"name\" column\ndf[1, ]           # Returns the first row\ndf[df$age &gt; 25, ] # Filters rows where age is greater than 25",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#working-with-file-paths",
+    "href": "r.html#working-with-file-paths",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.11 Working with File Paths",
+    "text": "6.11 Working with File Paths\nR provides several functions to work with file paths, allowing you to build, explore, and manipulate directories and files in a platform-independent way. Here are some common functions along with examples and explanations:\n\n6.11.1 Constructing File Paths with file.path()\n\nPurpose:\nfile.path() constructs file paths by combining directory and file names. It automatically uses the correct file separator for the operating system.\nExample:\n# Combine folder, subfolder, and file name\nfull_path &lt;- file.path(\"data\", \"raw\", \"myfile.txt\")\nprint(full_path)\nThis will produce a path like \"data/raw/myfile.txt\" on Unix-like systems or \"data\\\\raw\\\\myfile.txt\" on Windows.\n\n\n\n6.11.2 Listing Files with list.files()\n\nPurpose:\nlist.files() returns a character vector of the file names in a specified directory. It can also be used to filter files by pattern.\nExample:\n# List all files in the \"data\" directory\nfiles &lt;- list.files(path = \"data\")\nprint(files)\n\n# List only CSV files in the \"data\" directory\ncsv_files &lt;- list.files(path = \"data\", pattern = \"\\\\.csv$\")\nprint(csv_files)\nThis function is useful for dynamically accessing the contents of a directory.\n\n\n6.11.2.1 Listing Directories with list.dirs()\n\nPurpose:\nlist.dirs() provides a recursive list of directories (subdirectories included) within a specified path.\nExample:\n# List all directories within the \"data\" folder, including subdirectories\ndirectories &lt;- list.dirs(path = \"data\")\nprint(directories)\nThis function helps you understand the structure of your file system under a particular directory.\n\n\n\n6.11.2.2 Creating Directories with dir.create()\n\nPurpose:\ndir.create() is used to create new directories. When creating nested directories (sub-directories that do not yet exist), you must set the recursive argument to TRUE.\nExample:\n# Create a nested directory structure \"data/raw\"\ndir.create(path = file.path(\"data\", \"raw\"), recursive = TRUE)\nSetting recursive = TRUE ensures that if the parent directory \"data\" does not exist, it will be created along with \"raw\".\n\n\n\n6.11.2.3 Reading and Writing Text Files with readLines() and writeLines()\n\nreadLines():\n\nPurpose:\nReads text files line by line into a character vector, which is useful for processing or analyzing text.\nExample:\n# Read the content of a text file into a vector of lines\nlines &lt;- readLines(\"data/raw/myfile.txt\")\nprint(lines)\n\nwriteLines():\n\nPurpose:\nWrites a character vector to a text file, with each element being written as a separate line.\nExample:\n# Create a vector of text lines\noutput_lines &lt;- c(\"This is the first line.\", \"This is the second line.\")\n\n# Write the vector to a file called \"output.txt\"\nwriteLines(output_lines, con = \"data/output/output.txt\")\nThese functions are ideal for simple text processing, such as reading logs, configuration files, or exporting simple reports.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#writing-functions",
+    "href": "r.html#writing-functions",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.12 Writing Functions",
+    "text": "6.12 Writing Functions\nFunctions in R allow you to encapsulate operations and reuse code. Define a function using function():\nincrement &lt;- function(x) {\n  x + 1  # Adds 1 to the input value and returns it\n}\n\nincrement(3)  # Returns 4\nNote that functions always return the last value computed:\nincrement &lt;- function(x) {\n  x + 2\n  x + 1\n}\n\nincrement(3)  # Returns 4\nFunctions can also take multiple arguments:\nadd_numbers &lt;- function(x, y) {\n  return(x + y)\n}\n\nadd_numbers(2, 5)  # Returns 7\nA common example is a function to calculate the hypotenuse of a right triangle (you will use this daily):\nhypotenuse &lt;- function(a, b) {\n  sqrt(a^2 + b^2)  # Uses the Pythagorean theorem\n}\n\nhypotenuse(3, 4)  # Returns 5",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "r.html#basic-statistical-functions",
+    "href": "r.html#basic-statistical-functions",
+    "title": "6  Fundamental R Objects and Functions",
+    "section": "6.13 Basic Statistical Functions",
+    "text": "6.13 Basic Statistical Functions\nR includes built-in functions for summary statistics:\nmean(df$age)     # Computes the mean\nsd(df$age)       # Computes the standard deviation\nsummary(df)      # Provides a summary of the data frame\nTo create frequency tables:\ntable(df$name)  # Counts occurrences of each name",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Fundamental R Objects and Functions</span>"
+    ]
+  },
+  {
+    "objectID": "prac1.html",
+    "href": "prac1.html",
+    "title": "7  Practical One",
+    "section": "",
+    "text": "NOTE: the answers to the questions below should be placed into their own qmd file in a Quarto project on GitHub. This Quarto project (the rendered document itself, as well as the source code on GitHub) will be peer-assessed next week.\n\nFind all rows in “airquality” that have missing values. Note that the airquality dataset in R is always available (just type airquality in the console to see it).\nFind mean, sd, min, max for each of temperature and ozone level.\nFor linear regression, parameter estimates can be found as follows. \\(\\hat{\\boldsymbol{\\beta}} = (X^TX)^{-1}X^TY\\) Here, Y is the response variable, and X is the design matrix. The cars data (an R data set, also always available in R) contains two variables: speed and distance to stop. Fit a simple linear regression model to these data, i.e. find the \\(\\beta\\) estimates, using the equation above, and matrix calcuations in R.\nCheck that you get the same \\(\\beta\\) estimates as when fitting the linear regression model using lm() in R.",
+    "crumbs": [
+      "Day One: Projects in R",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical One</span>"
+    ]
+  },
+  {
+    "objectID": "sol1.html",
+    "href": "sol1.html",
+    "title": "Solution",
+    "section": "",
+    "text": "Part One:\nSince airquality is always available, we do not need to import it explicitly like we will have to do usually. Let us assign this data to variable df and view it to help with understanding.\n\ndf &lt;- airquality\nclass(df)\n\n# View(df)\n\nWe can also see what df really is; it is a data.frame.\nNow, there is an ABUNDANCE of ways to achieve the rest of the question. I will do a few:\n\nBrute Force:\nThis method uses for loops, considering every entry by going through each row and each column. We then check every entry to see if it is NA. If the entry is NA then take note of the row; otherwise check the next entry. Note: there is a break in the for loop because we do not want to double count a row if it has multiple columns which have NA entries for a specific row.\n\n\n# How do I know if something is na: is.na()\ndf &lt;-  airquality\n\nnaRows &lt;- c()\nfor (r in 1:nrow(df)){\n  for (col in 1:ncol(df)){\n    if (is.na(df[r, col])){\n      naRows &lt;- c(naRows, r)\n      break\n    }\n  }\n}\nprint(naRows)\n\n [1]   5   6  10  11  25  26  27  32  33  34  35  36  37  39  42  43  45  46  52\n[20]  53  54  55  56  57  58  59  60  61  65  72  75  83  84  96  97  98 102 103\n[39] 107 115 119 150\n\n\n\nProgressive Elegance:\n\n\n# which returns the indices which meet a certain condition\na &lt;- c()\nfor (col in 1:ncol(df)){\n  a &lt;- c(a, which(is.na(df[, col])))\n}\na &lt;- sort(unique(a))\n\n# complete.cases provides a boolean for whether the whole observation is NA free\nb &lt;- which(!complete.cases(df))\n\n# Are these all the same?\ncond1 &lt;- all(a == b)\ncond2 &lt;- all(a == naRows)\ncond3 &lt;- all(b == naRows)\nprint(\"Are they the same thing?\")\n\n[1] \"Are they the same thing?\"\n\nprint(cond1 && cond2 && cond3)\n\n[1] TRUE\n\n\n\n\nPart Two:\nThe unproblematic calculations are:\n\nmin(df$Temp); max(df$Temp); mean(df$Temp); sd(df$Temp)\n\n[1] 56\n\n\n[1] 97\n\n\n[1] 77.88235\n\n\n[1] 9.46527\n\n\nThe Ozone data is a bit problematic because it contains NA’s which means that some of these calculations cannot be completed. We need to remove these NA’s but we could do this in two ways:\n\nRemove all incomplete rows.\nOnly remove the NA for the ozone.\n\nAt this point, when we are just getting exposure to R, so there is no wrong way.\n\n# 1.\ncleanDf &lt;- df[-naRows, ]\nmin(cleanDf$Ozone); max(cleanDf$Ozone); mean(cleanDf$Ozone); sd(cleanDf$Ozone)\n\n[1] 1\n\n\n[1] 168\n\n\n[1] 42.0991\n\n\n[1] 33.27597\n\n# 2.\ncleanOzone &lt;- na.omit(df$Ozone)\nmin(cleanOzone); max(cleanOzone); mean(cleanOzone); sd(cleanOzone)\n\n[1] 1\n\n\n[1] 168\n\n\n[1] 42.12931\n\n\n[1] 32.98788\n\n# or even better:\nmin(df$Ozone, na.rm = T); max(df$Ozone, na.rm = T); mean(df$Ozone, na.rm = T); sd(df$Ozone, na.rm = T)\n\n[1] 1\n\n\n[1] 168\n\n\n[1] 42.12931\n\n\n[1] 32.98788\n\n\n\n\nPart Three:\nHere we assign the response and covariate, and create the design matrix \\(X\\). A design matrix may or may not be a familiar term to you. If not, a design matrix is the covariate matrix with a column of 1s. This is because it is required for the intercept term \\(\\beta_0\\).\n\n# Let us remove all the variables and clean the environment\n\nrm(list = ls())\n\ndf &lt;- cars\nY &lt;- df$dist\nspeed &lt;- df$speed\nX &lt;- cbind(1, speed)\n\nb &lt;- solve(t(X) %*% X) %*% t(X) %*% Y\nprint(b)\n\n            [,1]\n      -17.579095\nspeed   3.932409\n\n\n\n\nPart Four:\n\nmodel &lt;- lm(dist ~ speed, data = cars)\nsummary(model)\n\n\nCall:\nlm(formula = dist ~ speed, data = cars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-29.069  -9.525  -2.272   9.215  43.201 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -17.5791     6.7584  -2.601   0.0123 *  \nspeed         3.9324     0.4155   9.464 1.49e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 15.38 on 48 degrees of freedom\nMultiple R-squared:  0.6511,    Adjusted R-squared:  0.6438 \nF-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12\n\nmodel$coefficients\n\n(Intercept)       speed \n -17.579095    3.932409",
+    "crumbs": [
+      "Day One: Projects in R",
+      "Solution"
+    ]
+  },
+  {
+    "objectID": "day2.html",
+    "href": "day2.html",
+    "title": "Day 2: More on R Programming",
+    "section": "",
+    "text": "What Will We Cover by the End of Day One?",
+    "crumbs": [
+      "Day 2: More on R Programming"
+    ]
+  },
+  {
+    "objectID": "day2.html#what-will-we-cover-by-the-end-of-day-one",
+    "href": "day2.html#what-will-we-cover-by-the-end-of-day-one",
+    "title": "Day 2: More on R Programming",
+    "section": "",
+    "text": "Focus on basic coding in R\nUnderstand basic best practices",
+    "crumbs": [
+      "Day 2: More on R Programming"
+    ]
+  },
+  {
+    "objectID": "day2.html#what-is-the-outcome-for-today",
+    "href": "day2.html#what-is-the-outcome-for-today",
+    "title": "Day 2: More on R Programming",
+    "section": "What is the outcome for today?",
+    "text": "What is the outcome for today?\nCompile practicals into your running Quarto project.",
+    "crumbs": [
+      "Day 2: More on R Programming"
+    ]
+  },
+  {
+    "objectID": "varAssign.html",
+    "href": "varAssign.html",
+    "title": "8  Variable Assignment",
+    "section": "",
+    "text": "8.1 Assignment Operators\nIn the previous chapter, we discussed the assignment of variables in the most basic way. That is, you can assign a value to a variable by using either of the operators &lt;- or =, whereby the &lt;- operator is preferred. This is not quite complete.\nTip: you can press Alt + - to get &lt;- when in a code chunk or r-script.\nWhilst the operators: &lt;-, = are definitely the most common assignment operators in R, &lt;&lt;- , -&gt;, and -&gt;&gt; are also valid assignment operators. Therefore, the following will all achieve the same result, the number 3 will be stored to the appropriate variable:\na &lt;- 3\nb = 3\nd &lt;&lt;- 3\n3 -&gt; e\n3 -&gt;&gt; f\n\nprint(a)\n\n[1] 3\n\nprint(b)\n\n[1] 3\n\nprint(d)\n\n[1] 3\n\nprint(e)\n\n[1] 3\n\nprint(f)\n\n[1] 3\nWhere the problem arises is with functions and a notion called scope.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Variable Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "varAssign.html#assignment-operators",
+    "href": "varAssign.html#assignment-operators",
+    "title": "8  Variable Assignment",
+    "section": "",
+    "text": "8.1.1 What is scope?\nWithout getting too technical, when we assign a variable to a value there is a block of memory which gets allocated to store the information of that variable. For example, when we assign a &lt;- 3, there is a small bit (48 bytes) of memory which is allocated to the variable a. That means that when a is referenced, R knows to go look at that memory which shows that the value of the variable is 3. This memory allocation is not necessarily persistent.\nWhen we assign a variable in general, then the memory allocation will remain there until we explicitly remove it; however, when we call a function, that is not necessarily true. For example, consider the following code chunk:\n\nf &lt;- function(input){\n  localVar &lt;- input\n  return(localVar)\n}\n\nprint(localVar)\n\nThe function assigns the input to a variable, localVar but the print(localVar) line will produce an error. This is because the memory allocation for localVar is only assigned for the use of the function. Once the function returns, then that memory allocation is freed up once more. Therefore, we call the variable a local variable since it can realistically only be used within the function. A variable which is stored indefinitely is known as a global variable. The period for which the variable is allocated can be loosely termed as its scope.\n\n\n8.1.2 Where is the problem?\nNow let us break the function. Firstly, let us clear all variables which have been assigned previously, and then reassign the same function above.\n\nOption One:\nFirstly, we can choose to call the function with the = operator. Then f(input = 3) will return 3 as expected. However, the line print(input) will cause an error. This is because = only allocated as a local variable.\n\n\nrm(list = ls())\n\nf &lt;- function(input){\n  localVar &lt;- input\n  return(localVar)\n}\n\n\n(f(input = 3))\nprint(input)\n\n\nOption Two:\nAlternatively, we could call the function as follows. This will return the same value for the function call AND allow the print command. This is because input is assigned as a global variable in the function call.\n\n\n(f(input &lt;- 3))\n\n[1] 3\n\nprint(input)\n\n[1] 3\n\n\nOption one is best practice for coding. Using option 2 can make code fairly difficult to keep track of. Consider the following example:\n\ng &lt;- function(a){\n  a &lt;- a * 3\n  return(a)\n}\n\ng(a &lt;- 2)\n\n[1] 6\n\nprint(a)\n\n[1] 2\n\n\nThe function will return a value of 6 as expected, but the global variable will still be stored as 2. This is because any changes made to the variable in the function are actually made to a local variable copy of a and not on a itself.\n\n\n8.1.3 What about the &lt;&lt;- operator?\nClearly, when using functions, one needs to be careful of global and local variables. Essentially, when a function is called, any variable is either a global variable (defined outside the function and visible to everything) or a locally defined variable (in the sense that we define a new variable inside the function).\nUnintended issues can arise however, when trying to make changes to one of these global variables; only a copy of the actual global variable is used inside of a function scope. The operator &lt;&lt;- can get around this.\n\ng &lt;- function(){\n  globalVariable &lt;- 1\n  return(globalVariable)\n}\n(g())\nprint(globalVariable)\n\nThis code fails because globalVariable is only a local variable definition inside the function.\n\ng &lt;- function(){\n  globalVariable &lt;&lt;- 1\n  return(globalVariable)\n}\n(g())\n\n[1] 1\n\nprint(globalVariable)\n\n[1] 1\n\n\nThe &lt;&lt;- operator is a global assignment operator, bypassing the locality of function, as seen in the following extract.\nNote: it can be beneficial to provide a small description of the functions you write as follows.\n\naVariable &lt;- 100\n\nh &lt;- function(b){\n  # A function to help show local variables are separate from global variables\n  # \n  # Args:\n  #   b (double) - multiplies 'aVariable'\n  # \n  # Return:\n  #   (double) - updated 'aVariable'??\n  \n  aVariable &lt;- aVariable * b\n  \n  return(aVariable)\n}\n\n\n(h(b = 3))\n\n[1] 300\n\n(aVariable)\n\n[1] 100\n\nh &lt;- function(b){\n  aVariable &lt;&lt;- aVariable * b\n  \n  return(aVariable)\n}\n\n\n(h(b = 3))\n\n[1] 300\n\n(aVariable)\n\n[1] 300",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Variable Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "varAssign.html#tldr",
+    "href": "varAssign.html#tldr",
+    "title": "8  Variable Assignment",
+    "section": "8.2 TL;DR",
+    "text": "8.2 TL;DR\n\nUse &lt;- for normal variable assignment\nUse = when making a function call, for example: f(a = 3).\nAvoid &lt;&lt;- unless you are very sure!",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Variable Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "logic.html",
+    "href": "logic.html",
+    "title": "9  Logical Operators",
+    "section": "",
+    "text": "Logical operators are able to check whether certain conditions are TRUE or FALSE. The standard logical operators remain fairly consistent with other programs for operators such as ==, !=, &lt;, &lt;=, &gt;, &gt;=; however, the And and Or operators are provided by & and | respectively. This could differ from previously learnt languages. && and || are also logical operators available.\nAs you might expect, there are subtle differences between these latter operators. To see the difference, consider & and &&.\n\na &lt;- c(1,2,5)\nb &lt;- a\n\nHecticCalculation &lt;- function(){\n  \n  print('I am doing a hectic calculation, I promise')\n  \n  return(T)\n}\n\n# Operator comparison\n\nif(all(a != b) & HecticCalculation()){\n  print('I should be unreachable, first condition false')\n}\n\n[1] \"I am doing a hectic calculation, I promise\"\n\n\n\nif(all(a != b) && HecticCalculation()){\n  print('I should be unreachable, first condition false')\n}\n\n\nif(all(a == b) && HecticCalculation()){\n  print('I can run.')\n}\n\n[1] \"I am doing a hectic calculation, I promise\"\n[1] \"I can run.\"\n\n\nThe first if statement runs the hectic calculation because it checks both of the conditions on either side of it!\nThe && does not run the hectic calculation for the second if statement because the first condition fails (it prints nothing). For final if statement runs the hectic calculation, since the first condition passed, therefore the second condition is checked.\nThis type of logical behaviour can be very useful when dealing with difficult computations if used effectively, avoiding unnecessary function calls. The same can be achieved with ||.\nIn the above code, we have used the if statement which runs code if a condition is met. With this, we have the else and if else statements. They generally follow a structure like this:\n\naCondition = F\nanotherCondition = T\n\nif (aCondition){\n  \"Check original condition\"\n}else if (anotherCondition){\n  \"Check another condition IF `aCondition` is false\"\n}else {\n  \"If all of the above are false, then do this\"\n}\n\n[1] \"Check another condition IF `aCondition` is false\"",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Logical Operators</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html",
+    "href": "loops.html",
+    "title": "10  Loops",
+    "section": "",
+    "text": "10.1 For Loops\nThere are two common types of loops in programming:\nThese are consistent with other programming languages. Below are some examples to illustrate the required R syntax.\nThe general structure of the syntax is:\nfor (indicator in iterable){ ... }\nwhere the indicator is a variable which iterates through an object which is iterable. Therefore, indicator can be anything.\na &lt;- 1:10\n\nsum = 0 \nfor (i in a){\n  sum = sum + i\n}\nprint(sum)\n\n[1] 55\n\nsentence &lt;- \"hello world and some other words\"\nanIterable &lt;- strsplit(sentence, \" \")\nfor (word in anIterable){\n  print(word)\n}\n\n[1] \"hello\" \"world\" \"and\"   \"some\"  \"other\" \"words\"\nWe can even have nested for loops, which is when we have a for loop within another for loop!",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html#while-loops",
+    "href": "loops.html#while-loops",
+    "title": "10  Loops",
+    "section": "10.2 While Loops",
+    "text": "10.2 While Loops\nThe general structure of the syntax is:\nWhile (condition) { ... }\nwhere the condition is a Boolean (TRUE or FALSE). It could be the result of many conditions combined with logical operators. This loop will continue until this condition is false.\n\nmax = 10\nx &lt;- 0; i &lt;- 0\nwhile(x &lt;= max){\n  i &lt;- i + 1\n  x &lt;- x + 2 * i \n}\nx\n\n[1] 12",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html",
+    "href": "Vectors.html",
+    "title": "11  Vectors",
+    "section": "",
+    "text": "11.1 Vector Assignment\nLet us build on the basics of Vectors which were covered previously. Vectors are essential for organizing and performing calculations on larger collections of data when used correctly. Below, we cover the best practice for assignment of vectors and optimal calculations using vectors.\nThe code chunk below exemplifies the performance benefits of avoiding unnecessary appending to vectors (or just appending in general), especially when first constructing your vector.\nlen &lt;- 10000\nstartTime &lt;- Sys.time()\n\nstorage &lt;- c()\nfor (i in 1:len){\n  storage &lt;- c(storage, i)\n}\n\n(badExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.11203 secs\n\nrm(storage)\n\n\nstartTime &lt;- Sys.time()\n\nstorage &lt;- numeric(len)\nfor (i in 1:len){\n  storage[i] &lt;- i\n}\n\n(goodExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.002613068 secs",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html#vectorisation",
+    "href": "Vectors.html#vectorisation",
+    "title": "11  Vectors",
+    "section": "11.2 Vectorisation",
+    "text": "11.2 Vectorisation\nVectorization is the process of performing operations on entire vectors or arrays instead of using explicit loops of single scalars. It takes advantage of R’s optimized internal functions, leading to faster and more efficient code execution.\nThere are a few benefits for vectorisation - Speed: Vectorized operations are significantly faster than loops. - Conciseness: Code is shorter and easier to read. - Optimized Performance: R’s internal functions are written in compiled languages like C and Fortran, making them more efficient than explicit loops.\nThere are several base operations in R which have been extended from single scalar operations to vector operations where both the inputs and outputs are vectors. This operates in the same way as looping through the scalar input versions; however, much quicker.\n\n11.2.1 Performance\nEven for a simple squaring function, the performance difference between vectorisation and for loops is present.\n\nlen &lt;- 10000\nstartTime &lt;- Sys.time()\n\nstorage &lt;- numeric(len)\nfor (i in 1:len){\n  storage[i] &lt;- i^2\n}\n\n(badExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.00289917 secs\n\nrm(storage)\nstartTime &lt;- Sys.time()\n\nstorage &lt;- (1:len)^2\n\n(goodExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.002635002 secs\n\n\n\n\n11.2.2 Creating Vectorised Functions\nWhen one makes a function of scalar inputs, R provides a simple method to transform them into a vectorised version of the function as follows:\n\nf &lt;- function(a, b){\n  return(a^b)\n}\n\nfVec &lt;- Vectorize(f, vectorize.args = 'a')\n\n\nlen &lt;- 1000\nstartTime &lt;- Sys.time()\n\nstorage &lt;- numeric(len)\nfor (i in 1:len){\n  storage[i] &lt;- f(i, i)\n}\n\n(badExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.003569841 secs\n\nrm(storage)\nstartTime &lt;- Sys.time()\nar &lt;- 1:len\nstorage &lt;- fVec(ar, 3)\n\n(goodExec &lt;- Sys.time() - startTime)\n\nTime difference of 0.001860857 secs\n\n\nWhilst you should see performance benefits doing this, Vectorize is really just a wrapper function for some other base R functions which apply a function to a collection of elements without the same overheads seen by a for loop.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html#vectorized-alternatives-to-loops",
+    "href": "Vectors.html#vectorized-alternatives-to-loops",
+    "title": "11  Vectors",
+    "section": "11.3 Vectorized Alternatives to Loops",
+    "text": "11.3 Vectorized Alternatives to Loops",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html#comparison-of-apply-lapply-and-sapply",
+    "href": "Vectors.html#comparison-of-apply-lapply-and-sapply",
+    "title": "11  Vectors",
+    "section": "11.4 Comparison of apply(), lapply(), and sapply()",
+    "text": "11.4 Comparison of apply(), lapply(), and sapply()\n\n11.4.1 apply()\n\nUsed for applying functions to rows or columns of matrices and data frames.\nReturns a vector, matrix, or array depending on input and function used.\n\nExample:\n\nmatrix_data &lt;- matrix(1:9, nrow=3)\napply(matrix_data, 1, sum)  # Row sums\n\n[1] 12 15 18\n\napply(matrix_data, 2, sum)  # Column sums\n\n[1]  6 15 24\n\n\n\n\n11.4.2 lapply()\n\nUsed for lists and returns a list.\nApplies a function to each element of a list.\n\nExample:\n\nx &lt;- list(a = 1:5, b = 6:10)\nlapply(x, mean)  # Returns a list with mean of each vector\n\n$a\n[1] 3\n\n$b\n[1] 8\n\n\n\n\n11.4.3 sapply()\n\nSimilar to lapply(), but tries to simplify the output to a vector or matrix when possible.\n\nExample:\n\nx &lt;- list(a = 1:5, b = 6:10)\nsapply(x, mean)  # Returns a named vector\n\na b \n3 8 \n\n\n\n\n11.4.4 Key Differences\n\n\n\n\n\n\n\n\n\nFunction\nInput Type\nOutput Type\nBest For\n\n\n\n\napply()\nMatrix/Data Frame\nVector/Matrix/Array\nApplying functions to rows/columns\n\n\nlapply()\nList\nList\nWhen output must remain a list\n\n\nsapply()\nList\nVector/Matrix (if possible)\nWhen output can be simplified\n\n\n\n\n\n11.4.5 replicate()\nAnother vectorised function is replicate which focuses on repeating an expression/function multiple times. This makes it very useful when you want multiple evaluations of the same or similar expression, such as in simulation tasks.\n\n(replicate(10, sample(1:10,1,T)))\n\n [1]  5  4  2  9  2  8  3  9  9 10",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html#when-to-use-vectorization",
+    "href": "Vectors.html#when-to-use-vectorization",
+    "title": "11  Vectors",
+    "section": "11.5 When to Use Vectorization",
+    "text": "11.5 When to Use Vectorization\n\nWhen working with large datasets to improve efficiency.\nWhen performing mathematical operations on vectors or matrices.\nWhen using functions that inherently support vector inputs.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "Vectors.html#when-not-to-use-vectorization",
+    "href": "Vectors.html#when-not-to-use-vectorization",
+    "title": "11  Vectors",
+    "section": "11.6 When Not to Use Vectorization",
+    "text": "11.6 When Not to Use Vectorization\n\nWhen operations require sequential dependencies (e.g., recursive functions).\nWhen handling complex logical flows that require explicit iteration.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "extraQs.html",
+    "href": "extraQs.html",
+    "title": "Additional Exercises: Set One",
+    "section": "",
+    "text": "Exercise One:",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "Additional Exercises: Set One"
+    ]
+  },
+  {
+    "objectID": "extraQs.html#exercise-one",
+    "href": "extraQs.html#exercise-one",
+    "title": "Additional Exercises: Set One",
+    "section": "",
+    "text": "Calculate \\(log(i+1)\\) for \\(i=0, ..., 100\\). Confirm the average value is \\(3.647074\\).\nGenerate 10000 random values as follows:\n\nset.seed(20190128)\ny &lt;- rexp(10000)\n\nFind the largest value and its position. (Answer: 10.24488, 6150)\nHow many values are \\(&gt; 2\\) (absolute and %) (Answer 1291, 12.91%)\n\\(y_2\\): select every 2nd element of \\(y\\), starting from the first.\n\\(y_3\\): replace values \\(&gt;3\\) in \\(y_2\\) with 3. The average of these values should be 0.9423062.\nManually find the variance of \\(y_3\\) and confirm with var().",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "Additional Exercises: Set One"
+    ]
+  },
+  {
+    "objectID": "extraQs.html#exercise-two",
+    "href": "extraQs.html#exercise-two",
+    "title": "Additional Exercises: Set One",
+    "section": "Exercise Two:",
+    "text": "Exercise Two:\nThere are two trees in the middle of the Kalahari. On each tree birds of unknown species are sitting and feeling very hot. A bird from the first tree says to those on the second tree: “Hi - if one of you come to our tree then there will be the same number of us on each tree.” “Yeah, right”, says a bird from the second tree, “but if one of you comes to our tree, then we will be twice as many on our tree as on yours.”\nAdapted from these notes.\nHow many birds are one each tree?",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "Additional Exercises: Set One"
+    ]
+  },
+  {
+    "objectID": "extraQs.html#exercise-three",
+    "href": "extraQs.html#exercise-three",
+    "title": "Additional Exercises: Set One",
+    "section": "Exercise Three:",
+    "text": "Exercise Three:\nThe following problem is known as the Monte Hall problem and was posed in a letter by Steve Selvin to the American Statistician in 1975.\nHe wrote, Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice?\nWrite a R program to simulate the above game. Explain what the contestant’s optimal decision is.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "Additional Exercises: Set One"
+    ]
+  },
+  {
+    "objectID": "extraQs.html#exercise-four",
+    "href": "extraQs.html#exercise-four",
+    "title": "Additional Exercises: Set One",
+    "section": "Exercise Four:",
+    "text": "Exercise Four:\nLocally weighted scatterplot smoothing (Lowess) is a smoothing technique which is a mixture of moving averages and local regression. Below, we briefly outline the technique before creating a customLowess function.\n\nWhat is Lowess?\nThe Lowess approach attempts to look at the closest neighbours of a data point to find some weighted average of the closest neighbours to act as the smoothed data point, providing a smoothed function \\[\\begin{equation}\n  \\hat{y} = f(x).\n\\end{equation}\\]\n\n\nSteps to Lowess\n\nData\n\nAs usual, we have observed data pairs \\[ (x_1,y_1), \\dots, (x_n, y_n).\\]\n\nSpan\n\nWe need to choose the span of the smoothing, denoted \\(f\\) such that \\(0&lt;f&lt;1\\). The span defines the number of closest neighbours to use when smoothing point \\(x_i\\) such that \\[ k = \\lceil f\\cdot n\\rceil\\] where \\(k\\) is the number of closest neighbours used for point \\(x_i\\) and \\(n\\) is the number of observations.\n\nCompute Weights\n\nThe weights applied to each neighbour is calculated using the tricube kernel such that \\[\\begin{equation}\n    w_j = \\left(1 - \\left( \\frac{|x_j - x_i|}{d_{max}}  \\right)^3  \\right)^3\n\\end{equation}\\] where \\(w_j\\) is the weight for neighbour \\(x_j\\), \\(d_{max}\\)is the distance to the farthest neighbour among the \\(k\\) neighbours selected.\nNote that this means that if \\(|x_j - x_i| \\geq d_{max}\\), then \\(w_j = 0\\).\n\nWeighted Regression\n\nPerform a weighted linear regression \\[\\begin{equation}\n  y = \\beta_0 + \\beta_1 x + e\n\\end{equation}\\] where the weighting means that we want to minimise \\[\\begin{equation}\n  \\sum_{j \\in \\text{neighbours}} w_j \\left(y_j - (\\beta_0 + \\beta_1 x_j)^2\\right)\n\\end{equation}\\]\nThe optimal \\(\\beta\\) is given by \\[\\hat\\beta = (X^TWX)^{-1}X^TWy\\] where \\(W\\) is the diagonal matrix given by the diagonal values \\((w_1, ..., w_k)\\).\nThe smoothed value for \\(x_i\\) is then the predicted value \\[\\hat y_i = \\hat \\beta_0 + \\hat \\beta_1 x_i\\]\n\nRepeat for each \\(x_i\\)\n\n\n\nQuestion\n\nGenerate Simulated Data:\n\nSet your seed to 1, i.e. set.seed(1).\nCreate \\(\\boldsymbol x\\) as a sequence of numbers from 1 to 100.\nGenerate \\(\\boldsymbol y\\) as a noisy sine wave such that \\[y_i = \\sin\\left(\\frac{x_i}{10}\\right) + e_i\\] where \\(e_i \\sim \\mathcal{N}\\left(0, 0.2^2\\right)\\)\n\nImplement the LOWESS Algorithm:\n\nDefine a function customLowess(x, y, f) that returns the smoothed values.\n\nCompare with R’s Built-in lowess():\n\nUse the built-in lowess() function with the same f value. You will also need to set the iter argument to 0.\nPlot both curves to compare their smoothing values.",
+    "crumbs": [
+      "Day 2: More on R Programming",
+      "Additional Exercises: Set One"
+    ]
+  },
+  {
+    "objectID": "day4.html",
+    "href": "day4.html",
+    "title": "Day Four: A Tidyverse Workflow",
+    "section": "",
+    "text": "Nestled within a discussion of dataframes in R, we will introduce an alternative, refined approach to a statistician’s workflow. Whilst one could use base R to import, transform, model and visualise data; Tidyverse offers a more modern approach to this workflow . In this section, we will jump into the Tidyverse and cover its benefits and any of its flaws.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow"
+    ]
+  },
+  {
+    "objectID": "tidy1.html",
+    "href": "tidy1.html",
+    "title": "12  The Tidyverse",
+    "section": "",
+    "text": "12.1 Readability\nWe have had some exposure on how to store and handle data in R with vectors, matrices and dataframes. While powerful, this base R approach can be difficult to work with, especially when reviewing someone else’s code or when you return to you own code after a couple of months.\nEnter the Tidyverse.\nTidyverse is a collection of packages that share a common philosophy of data handling. “All packages share an underlying design philosophy, grammar, and data structures.” This provides a consistent interface with a focus on readable syntax. It is not a different language; it is not incompatible with the base R that you already know.\nIn Base R, functions were written by different people over 40 years, each of them with a personalised design logic.\nThis means you have to memorize a different syntax for every new task. This makes code difficult to code and taxing to follow in many cases.\nThe Tidyverse is a collection of packages (for data, dates, strings, and plots) that all share the same grammar. If you learn the grammar for one, you essentially learn it for all of them. This grammar leverages the notion of Tidy Data where everything in the tidyverse expects a tidy dataframe; improving how we can chain functions together because consistency in the interface.\nTo understand why we use the tidyverse, let us look at a common problem: cleaning data. Consider the following code options.\ndata(mtcars)\n\n# We want cars with 4 cylinders, and we want to calculate a new metric\nclean_cars &lt;- mtcars[mtcars$cyl == 4, ]\nmean_metric &lt;- mean(clean_cars$mpg / clean_cars$wt)\n\nprint(mean_metric)\nlibrary(tidyverse)\nmtcars %&gt;%\n  filter(cyl == 4) %&gt;%\n  mutate(metric = mpg / wt) %&gt;%\n  summarise(mean_metric = mean(metric))\nIf you are debugging between these two options, which would you prefer? The second option allows you to read the process like a sentence: take the data, filter it, mutate a new column, then summarise it. The first option requires you to mentally track row indices and column names simultaneously.\nThis readability is driven by the following two sections.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>The Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "tidy1.html#readability",
+    "href": "tidy1.html#readability",
+    "title": "12  The Tidyverse",
+    "section": "",
+    "text": "Option One (Base R):\n\n\n\nOption Two (Tidyverse):\n\n\n\n\n\n\n12.1.1 The Pipe Operator %&gt;%\nThe above code leverages a new operator, the pipe operator %&gt;% . Without getting technical, the operator takes the object on the left and uses it as the first argument of the function on the right. This approach offers an improvement in readability.\nIn mathematics (and base R), we often require a composition of functions such as: \\(f(g(h(x)))\\). Without becoming well accustomed with this nesting, it takes some thought to process the composition logic. Similarly, in code we have compositions like:\n\n# Base R nesting\nsummarise(group_by(filter(data, variable &gt; 0), category), mean_val = mean(value))\n\nTo read this, we have to find the innermost parenthesis (filter) and work its way out. The pipe operator lets us write code the way we think, and the way we speak.\n\n# Tidyverse piping\ndata %&gt;%\n  filter(variable &gt; 0) %&gt;%\n  group_by(category) %&gt;%\n  summarise(mean_val = mean(value)) \n\nTip: You can press Ctrl + Shift + M (or Cmd + Shift + M on Mac) to insert %&gt;%.\nNote: In 2021, R introduced a pipe operator into base R, so you could use %&gt;% instead without needing to import tidyverse.\n\n\n12.1.2 One Verb, One Job:\nAs we have seen many times already, there are multiple ways to achieve the same task in R. Many Base R functions are themselves compositions of functions and there are operators which are overloaded. For example, the square bracket, indexing operator, [, does three different things depending on where you put the comma:\n\nSelects rows: mtcars[1:3 , ]\nSelects columns: mtcars[ , 1:2]\nFilters data: mtcars[mtcars$cyl == 4 , ]\n\nWhilst these are easier examples which may be easy to keep track of, tidyverse simplifies it further by enforces a strict One Verb = One Job policy. Whilst there are plenty of functions / verbs available with tidyverse, here are some of the most important functions which leverage the language of statistics.\n\nfilter(): Only touches rows.\nselect(): Only touches columns.\nmutate(): Only creates new variables.\nsummarise(): Only does math (reduces data).\n\nIf you can describe the process in statistical language, then there is probably a tidyverse function for it. Furthermore, these verbs take in a dataframe and output a dataframe. This helps with the predictability and readability of code. Stacked with %&gt;%, code quickly reads like a normal sentence.\nTip: type dplyr:: in the console, and you can view the full list of available functions.\nWarning: when you import tidyverse, certain base R functions will be overwritten which can result in unexpected results.\n\n12.1.2.1 Verb examples\nHere is a concise summary of the content on the dplyr section of R4DS. For more examples, refer the excellent examples within each function’s help file (e.g. ?filter).\nTo run the examples below, you will need to attach the nycflights13 package and the tidyverse package (or just the dplyr package).\n\nif (!requireNamespace(\"dplyr\", quietly = TRUE)) {\n  install.packages(\"dplyr\") \n} \nlibrary(dplyr) \ndata(flights, package = \"nycflights13\") \nflights\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n12.1.2.2 Rows\nThe rows functions select rows (filter), order rows (arrange), and select distinct rows (distinct).\n\nfilter(): Keeps rows that meet specified conditions.\n\nflights %&gt;% filter(month == 1)\n\n# A tibble: 27,004 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 26,994 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\narrange(): Reorders rows based on column values.\n\nflights %&gt;% arrange(dep_delay)\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013    12     7     2040           2123       -43       40           2352\n 2  2013     2     3     2022           2055       -33     2240           2338\n 3  2013    11    10     1408           1440       -32     1549           1559\n 4  2013     1    11     1900           1930       -30     2233           2243\n 5  2013     1    29     1703           1730       -27     1947           1957\n 6  2013     8     9      729            755       -26     1002            955\n 7  2013    10    23     1907           1932       -25     2143           2143\n 8  2013     3    30     2030           2055       -25     2213           2250\n 9  2013     3     2     1431           1455       -24     1601           1631\n10  2013     5     5      934            958       -24     1225           1309\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\ndistinct(): Returns unique rows or unique combinations of specified columns.\n\nflights %&gt;% distinct(origin, dest)\n\n# A tibble: 224 × 2\n   origin dest \n   &lt;chr&gt;  &lt;chr&gt;\n 1 EWR    IAH  \n 2 LGA    IAH  \n 3 JFK    MIA  \n 4 JFK    BQN  \n 5 LGA    ATL  \n 6 EWR    ORD  \n 7 EWR    FLL  \n 8 LGA    IAD  \n 9 JFK    MCO  \n10 LGA    ORD  \n# ℹ 214 more rows\n\n\n\n\n\n12.1.2.3 Columns\nThe columns functions create new columns (mutate), select columns (select), rename columns (rename), and relocate columns (relocate).\n\nselect(): Chooses and reorders specific columns.\n\nflights %&gt;% select(year, month, day, dep_delay)\n\n# A tibble: 336,776 × 4\n    year month   day dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1         2\n 2  2013     1     1         4\n 3  2013     1     1         2\n 4  2013     1     1        -1\n 5  2013     1     1        -6\n 6  2013     1     1        -4\n 7  2013     1     1        -5\n 8  2013     1     1        -3\n 9  2013     1     1        -3\n10  2013     1     1        -2\n# ℹ 336,766 more rows\n\n\n\nSelecting a range:\n\nflights %&gt;% select(year:day)\n\n# A tibble: 336,776 × 3\n    year month   day\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1  2013     1     1\n 2  2013     1     1\n 3  2013     1     1\n 4  2013     1     1\n 5  2013     1     1\n 6  2013     1     1\n 7  2013     1     1\n 8  2013     1     1\n 9  2013     1     1\n10  2013     1     1\n# ℹ 336,766 more rows\n\n\nSelecting all columns except some:\n\nflights %&gt;% select(!year:arr_delay)\n\n# A tibble: 336,776 × 10\n   carrier flight tailnum origin dest  air_time distance  hour minute\n   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1 UA        1545 N14228  EWR    IAH        227     1400     5     15\n 2 UA        1714 N24211  LGA    IAH        227     1416     5     29\n 3 AA        1141 N619AA  JFK    MIA        160     1089     5     40\n 4 B6         725 N804JB  JFK    BQN        183     1576     5     45\n 5 DL         461 N668DN  LGA    ATL        116      762     6      0\n 6 UA        1696 N39463  EWR    ORD        150      719     5     58\n 7 B6         507 N516JB  EWR    FLL        158     1065     6      0\n 8 EV        5708 N829AS  LGA    IAD         53      229     6      0\n 9 B6          79 N593JB  JFK    MCO        140      944     6      0\n10 AA         301 N3ALAA  LGA    ORD        138      733     6      0\n# ℹ 336,766 more rows\n# ℹ 1 more variable: time_hour &lt;dttm&gt;\n\n\n\nmutate(): Creates new columns derived from existing ones.\n\nflights %&gt;%\n  mutate(speed = distance / air_time * 60) %&gt;%\n  select(distance, air_time, speed)\n\n# A tibble: 336,776 × 3\n   distance air_time speed\n      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1     1400      227  370.\n 2     1416      227  374.\n 3     1089      160  408.\n 4     1576      183  517.\n 5      762      116  394.\n 6      719      150  288.\n 7     1065      158  404.\n 8      229       53  259.\n 9      944      140  405.\n10      733      138  319.\n# ℹ 336,766 more rows\n\n\nrename(): Changes column names without removing other columns.\n\nflights %&gt;% rename(YEAR = year)\n\n# A tibble: 336,776 × 19\n    YEAR month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\nrelocate(): Moves columns to a new position within the data frame.\n\nflights %&gt;% relocate(carrier, flight)\n\n# A tibble: 336,776 × 19\n   carrier flight  year month   day dep_time sched_dep_time dep_delay arr_time\n   &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;\n 1 UA        1545  2013     1     1      517            515         2      830\n 2 UA        1714  2013     1     1      533            529         4      850\n 3 AA        1141  2013     1     1      542            540         2      923\n 4 B6         725  2013     1     1      544            545        -1     1004\n 5 DL         461  2013     1     1      554            600        -6      812\n 6 UA        1696  2013     1     1      554            558        -4      740\n 7 B6         507  2013     1     1      555            600        -5      913\n 8 EV        5708  2013     1     1      557            600        -3      709\n 9 B6          79  2013     1     1      557            600        -3      838\n10 AA         301  2013     1     1      558            600        -2      753\n# ℹ 336,766 more rows\n# ℹ 10 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, tailnum &lt;chr&gt;,\n#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,\n#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\nMoving the columns before a specified column:\n\nflights %&gt;% relocate(carrier, flight, .before = year)\n\n# A tibble: 336,776 × 19\n   carrier flight  year month   day dep_time sched_dep_time dep_delay arr_time\n   &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;\n 1 UA        1545  2013     1     1      517            515         2      830\n 2 UA        1714  2013     1     1      533            529         4      850\n 3 AA        1141  2013     1     1      542            540         2      923\n 4 B6         725  2013     1     1      544            545        -1     1004\n 5 DL         461  2013     1     1      554            600        -6      812\n 6 UA        1696  2013     1     1      554            558        -4      740\n 7 B6         507  2013     1     1      555            600        -5      913\n 8 EV        5708  2013     1     1      557            600        -3      709\n 9 B6          79  2013     1     1      557            600        -3      838\n10 AA         301  2013     1     1      558            600        -2      753\n# ℹ 336,766 more rows\n# ℹ 10 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, tailnum &lt;chr&gt;,\n#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,\n#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\n\n12.1.2.4 Groups & Summaries\nThe groups and summaries functions group data (group_by) and summarise data within groups (summarise).\n\ngroup_by(): Splits the data into groups based on one or more columns. The grouping is not visible, and does not create multiple dataframes. See summarise below for how to use the groups.\n\nflights %&gt;% group_by(month)\n\n# A tibble: 336,776 × 19\n# Groups:   month [12]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\nsummarise(): Computes summary statistics for each group.\n\nflights %&gt;% group_by(month) %&gt;% summarise(avg_delay = mean(dep_delay, na.rm = TRUE))\n\n# A tibble: 12 × 2\n   month avg_delay\n   &lt;int&gt;     &lt;dbl&gt;\n 1     1     10.0 \n 2     2     10.8 \n 3     3     13.2 \n 4     4     13.9 \n 5     5     13.0 \n 6     6     20.8 \n 7     7     21.7 \n 8     8     12.6 \n 9     9      6.72\n10    10      6.24\n11    11      5.44\n12    12     16.6 \n\n\nungroup(): removes the grouping metadata from a data frame.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>The Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html",
+    "href": "tidy2.html",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "",
+    "text": "13.1 Base R Dataframes\nIn our introduction we have made reference to Tidy Data without really defining it. In this section, we will introduce the notion of tidy data, a tidyverse approach to dataframes, and reshaping dataframes between the long and wide representations.\nWorking with large dataframes can be challenging if you inadvertently print all rows to the console. Consider the following example:\nexample_df &lt;- data.frame(\n  id = rep(paste0(\"id_\", 1:500), each = 20),\n  timepoint = rep(1:20, 500),\n  disease_status = rep(\n    sample(c(\"healthy\", \"diseased\"), 20, replace = TRUE),\n    each = 500\n  ),\n  blood_pressure = c(\n    runif(20, 120, 140) |&gt; round(),\n    sample(c(NA, runif(19, 120, 140)), 9980, replace = TRUE)\n  )\n)\n# Introduce a typo for demonstration\nexample_df[50, \"disease_status\"] &lt;- \"Healthy\"\nThis dataframe contains 10,000 rows:\nnrow(example_df)\n\n[1] 10000\nPrinting the entire dataframe (e.g., simply typing example_df) would display all rows, which is both inconvenient and time-consuming. Instead, we typically use the head() function to preview just the first few rows:\nhead(example_df)\n\n    id timepoint disease_status blood_pressure\n1 id_1         1       diseased            133\n2 id_1         2       diseased            132\n3 id_1         3       diseased            128\n4 id_1         4       diseased            131\n5 id_1         5       diseased            132\n6 id_1         6       diseased            127\nHowever, constantly having to call head() is not ideal. A better solution is to convert the dataframe into a tibble.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html#tidyverse-dataframes",
+    "href": "tidy2.html#tidyverse-dataframes",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "13.2 Tidyverse DataFrames",
+    "text": "13.2 Tidyverse DataFrames\nSince tidyverse aims to provide a consistent interface for the entire data workflow, it is only natural that an alternative to the base R dataframe is available. The alternative, tibble, can be thought of a modern dataframe which is very similar to the base version, with slight tweaks. A tibble dataframe is:\n\nLazy: It does not do any implicit conversions like converting strings to factors unless you tell it to\nStrict: It will not allow you to anything ambiguous.\n\nWhilst saying that a dataframe is lazy and strict does not sound like a positive, this prevents unexpected behaviour which you can easily sink hours into debugging.\nAnother benefit of tibble is an improved visualisation interface. When you print a tibble, it only shows the first 10 rows and includes data type information for each column. This is particularly useful because it lets you quickly verify, for example, whether timepoint is numeric or character; information that can be obscured in the default dataframe printout. This display can help you catch issues like typos or unexpected data types early on.\n\n13.2.1 Using tibble\n\nlibrary(tidyverse)\n\nConvert your dataframe to a tibble using as_tibble():\n\n# Check the class before conversion\nclass(example_df)\n\n[1] \"data.frame\"\n\n# Convert to tibble\nexample_df &lt;- as_tibble(example_df)\n\n# Check the class after conversion\nclass(example_df)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\nNow, simply typing example_df will display a neat summary of your data:\n\nexample_df\n\n# A tibble: 10,000 × 4\n   id    timepoint disease_status blood_pressure\n   &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;                   &lt;dbl&gt;\n 1 id_1          1 diseased                  133\n 2 id_1          2 diseased                  132\n 3 id_1          3 diseased                  128\n 4 id_1          4 diseased                  131\n 5 id_1          5 diseased                  132\n 6 id_1          6 diseased                  127\n 7 id_1          7 diseased                  131\n 8 id_1          8 diseased                  140\n 9 id_1          9 diseased                  129\n10 id_1         10 diseased                  133\n# ℹ 9,990 more rows\n\n\nThis tidy display helps you catch issues like typos or unexpected data types early on. It can be beneficial to load both tibble and ggplot2 at the top of your scripts.\nYou can also create new dataframes directly as tibbles:\n\nnew_tbl &lt;- tibble(x = 1:5, y = rnorm(5))\nnew_tbl\n\n# A tibble: 5 × 2\n      x      y\n  &lt;int&gt;  &lt;dbl&gt;\n1     1  1.18 \n2     2  2.46 \n3     3  0.535\n4     4 -0.103\n5     5  0.915\n\n\nNote that for a tibble object (i.e. a dataframe that has class tbl_df) to display as a tibble, the tibble package needs to be attached. So always add library(tibble) to the top of your script.\nA final, very nice feature of tibbles is that selecting one column using df[, \"column\"] will return a tibble, rather than a vector. This is typically what we would expect:\n\nexample_df[, \"id\"]\n\n# A tibble: 10,000 × 1\n   id   \n   &lt;chr&gt;\n 1 id_1 \n 2 id_1 \n 3 id_1 \n 4 id_1 \n 5 id_1 \n 6 id_1 \n 7 id_1 \n 8 id_1 \n 9 id_1 \n10 id_1 \n# ℹ 9,990 more rows\n\n\n\n13.2.1.1 Exploring Data Columns with view_cols\nWhilst tibbles provide a more informative display, they still only show the first few rows of each column.\nAnother useful tool is the view_cols function from the UtilsDataRSV package. This function displays unique entries for each column—always showing any missing values (NAs)—so you can quickly identify anomalies such as typos or unexpected values.\nTo install the UtilsDataRSV package, use the following code:\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\")\n}\nremotes::install_github(\"SATVILab/UtilsDataRSV\")\n\nOnce installed, you can apply view_cols to your tibble to inspect the unique values in each column:\n\nUtilsDataRSV::view_cols(example_df)\n\n[1] \"id\"\n [1] \"id_462\" \"id_389\" \"id_7\"   \"id_32\"  \"id_421\" \"id_102\" \"id_346\" \"id_120\"\n [9] \"id_370\" \"id_348\" \"id_448\" \"id_460\" \"id_223\" \"id_219\" \"id_214\" \"id_211\"\n[17] \"id_363\" \"id_372\" \"id_233\" \"id_425\"\n[1] \"480 unique entries not displayed\"\n[1] \"_____________________\"\n[1] \"timepoint\"\n[1] 15 14 12  1  6\n[1] \"_____________________\"\n[1] \"disease_status\"\n[1] \"diseased\" \"Healthy\"  \"healthy\" \n[1] \"_____________________\"\n[1] \"blood_pressure\"\n[1] 137.1108 139.9847 136.0000 120.6906       NA\n[1] \"_____________________\"\n\n\nWarning: Not all unique entries displayed for these non-numeric cols: id\n\n\nview_cols is particularly helpful when you cannot easily inspect all the rows or columns of a dataframe. For example, with 10,000 rows, it’s impractical to scroll through the entire dataset to:\n\nIdentify Typos: In our example, the first ten rows may not reveal that disease_status contains three unique entries (e.g., \"healthy\", \"diseased\", and the typo \"Healthy\").\nDetect Missing Data: It’s easy to overlook missing values (NAs).\nVerify Expected Values: For instance, the id column should have 500 unique entries, and view_cols can help you confirm th\n\nFor a possibly more polished alternative, consider exploring the skimr package, which (I think) offers similar functionality.\nYou can also display the dataframe on its side, using dplyr::glimpse():\n\ndplyr::glimpse(example_df)\n\nRows: 10,000\nColumns: 4\n$ id             &lt;chr&gt; \"id_1\", \"id_1\", \"id_1\", \"id_1\", \"id_1\", \"id_1\", \"id_1\",…\n$ timepoint      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ disease_status &lt;chr&gt; \"diseased\", \"diseased\", \"diseased\", \"diseased\", \"diseas…\n$ blood_pressure &lt;dbl&gt; 133.0000, 132.0000, 128.0000, 131.0000, 132.0000, 127.0…",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html#what-is-tidy-data",
+    "href": "tidy2.html#what-is-tidy-data",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "13.3 What is Tidy Data?",
+    "text": "13.3 What is Tidy Data?\nTidy Data is defined a three strict rules. These rules define the structure of data, rather than allowing one’s stylistic views to define how data is structured. A dataset is tidy if:\n\nEach variable has its own column\nEach observation has its own row\nEach value lives in a single cell\n\nConsistent data structure simplifies analysis, leverages vectorized operations, and makes it easier to use tidyverse functions.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html#reshaping",
+    "href": "tidy2.html#reshaping",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "13.4 Reshaping",
+    "text": "13.4 Reshaping\nConsider the following data. Is it tidy?\n\n# A classic \"Wide\" dataset\nscores_wide &lt;- tibble(\n  Student = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Math    = c(88, 72, 95),\n  English = c(90, 85, 80),\n  History = c(75, 88, 92)\n)\n\nprint(scores_wide)\n\n# A tibble: 3 × 4\n  Student  Math English History\n  &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1 Alice      88      90      75\n2 Bob        72      85      88\n3 Charlie    95      80      92\n\n\nRecording data like this is very common in Excel and is a format we are familiar with. But what are the variables?\nConverting the data to tidy data often improves how we can analyse (filter, group, summarise, plot) the data. We call this data long data, and the above Excel style data wide data. We can convert to long data with pivot_longer() from the tidyr package.\n\nscores_long &lt;- scores_wide %&gt;%\n  pivot_longer(\n    cols = c(Math, English, History), # The columns we want to bundle up\n    names_to = \"Subject\",             # What should we call the new key column?\n    values_to = \"Score\"               # What should we call the new value column?\n  )\n\nprint(scores_long)\n\n# A tibble: 9 × 3\n  Student Subject Score\n  &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;\n1 Alice   Math       88\n2 Alice   English    90\n3 Alice   History    75\n4 Bob     Math       72\n5 Bob     English    85\n6 Bob     History    88\n7 Charlie Math       95\n8 Charlie English    80\n9 Charlie History    92\n\n\nIn this long format, every row is a single test result or a single observation. We can easily summarise the data now; for example:\n\nscores_long %&gt;% \n  group_by(Student) %&gt;% \n  summarise(Mean =  mean(Score))\n\n# A tibble: 3 × 2\n  Student  Mean\n  &lt;chr&gt;   &lt;dbl&gt;\n1 Alice    84.3\n2 Bob      81.7\n3 Charlie  89  \n\nscores_long %&gt;% \n  group_by(Subject) %&gt;% \n  summarise(Mean =  mean(Score))\n\n# A tibble: 3 × 2\n  Subject  Mean\n  &lt;chr&gt;   &lt;dbl&gt;\n1 English    85\n2 History    85\n3 Math       85\n\n\nIf we want to return to the wide version of the data, for example if we have finished the analysis and want to create a table OR we want to cover calculations based on the difference between two subjects (this will be easier when the columns are still side-by-side), then we use pivot_wider().\n\n# Let's turn our long data back into a human-readable table\nreport_table &lt;- scores_long %&gt;%\n  pivot_wider(\n    names_from = Subject,  # Which column holds the new column headers?\n    values_from = Score    # Which column holds the values to fill the cells?\n  )\n\nprint(report_table)\n\n# A tibble: 3 × 4\n  Student  Math English History\n  &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1 Alice      88      90      75\n2 Bob        72      85      88\n3 Charlie    95      80      92",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html#joining-dataframes",
+    "href": "tidy2.html#joining-dataframes",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "13.5 Joining dataframes",
+    "text": "13.5 Joining dataframes\nThe dplyr package also provides functions for joining dataframes, such as left_join() and inner_join().\nThe full-length notes are in the R4DS chapter on joins.\n\n13.5.1 Key Joining Concepts in dplyr\nData analysis typically involves combining multiple data frames. Joins let you connect tables using shared keys, which can be primary keys (unique identifiers in one table) and foreign keys (variables that reference primary keys in another).\n\n\n13.5.2 Summary\nAgain, here is a concise summary of the R4DS content on the joins section. More examples are available in the help files for each function (e.g. ?left_join).\nTo run the examples below, attach the dplyr package and create and load the following datasets:\n\nlibrary(dplyr)\ndata(\"flights\", package = \"nycflights13\")\nflights2 &lt;- flights |&gt; \n  select(year, time_hour, origin, dest, tailnum, carrier)\ndata(\"airlines\", package = \"nycflights13\")\ndata(\"planes\", package = \"nycflights13\")\ndata(\"airports\", package = \"nycflights13\")\ndf1 &lt;- tibble(key = c(1, 2, 2), val_x = c(\"x1\", \"x2\", \"x3\"))\ndf2 &lt;- tibble(key = c(1, 2, 2), val_y = c(\"y1\", \"y2\", \"y3\"))\n\nHere is what these datasets look like:\n\nflights2\n\n# A tibble: 336,776 × 6\n    year time_hour           origin dest  tailnum carrier\n   &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  \n 1  2013 2013-01-01 05:00:00 EWR    IAH   N14228  UA     \n 2  2013 2013-01-01 05:00:00 LGA    IAH   N24211  UA     \n 3  2013 2013-01-01 05:00:00 JFK    MIA   N619AA  AA     \n 4  2013 2013-01-01 05:00:00 JFK    BQN   N804JB  B6     \n 5  2013 2013-01-01 06:00:00 LGA    ATL   N668DN  DL     \n 6  2013 2013-01-01 05:00:00 EWR    ORD   N39463  UA     \n 7  2013 2013-01-01 06:00:00 EWR    FLL   N516JB  B6     \n 8  2013 2013-01-01 06:00:00 LGA    IAD   N829AS  EV     \n 9  2013 2013-01-01 06:00:00 JFK    MCO   N593JB  B6     \n10  2013 2013-01-01 06:00:00 LGA    ORD   N3ALAA  AA     \n# ℹ 336,766 more rows\n\n\n\nairlines\n\n# A tibble: 16 × 2\n   carrier name                       \n   &lt;chr&gt;   &lt;chr&gt;                      \n 1 9E      Endeavor Air Inc.          \n 2 AA      American Airlines Inc.     \n 3 AS      Alaska Airlines Inc.       \n 4 B6      JetBlue Airways            \n 5 DL      Delta Air Lines Inc.       \n 6 EV      ExpressJet Airlines Inc.   \n 7 F9      Frontier Airlines Inc.     \n 8 FL      AirTran Airways Corporation\n 9 HA      Hawaiian Airlines Inc.     \n10 MQ      Envoy Air                  \n11 OO      SkyWest Airlines Inc.      \n12 UA      United Air Lines Inc.      \n13 US      US Airways Inc.            \n14 VX      Virgin America             \n15 WN      Southwest Airlines Co.     \n16 YV      Mesa Airlines Inc.         \n\n\n\nplanes\n\n# A tibble: 3,322 × 9\n   tailnum  year type              manufacturer model engines seats speed engine\n   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; \n 1 N10156   2004 Fixed wing multi… EMBRAER      EMB-…       2    55    NA Turbo…\n 2 N102UW   1998 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 3 N103US   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 4 N104UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 5 N10575   2002 Fixed wing multi… EMBRAER      EMB-…       2    55    NA Turbo…\n 6 N105UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 7 N107US   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 8 N108UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n 9 N109UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n10 N110UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…\n# ℹ 3,312 more rows\n\n\n\ndf1\n\n# A tibble: 3 × 2\n    key val_x\n  &lt;dbl&gt; &lt;chr&gt;\n1     1 x1   \n2     2 x2   \n3     2 x3   \n\n\n\ndf2\n\n# A tibble: 3 × 2\n    key val_y\n  &lt;dbl&gt; &lt;chr&gt;\n1     1 y1   \n2     2 y2   \n3     2 y3   \n\n\n\n13.5.2.1 Mutating Joins\nMutating joins add new columns from one data frame to another based on matching key values. They share a common interface:\n\nleft_join(): Keeps all rows from the left table and adds matching columns from the right table.\n\n# Add full airline names to flights2 data\nflights2 |&gt; left_join(airlines)\n\nJoining with `by = join_by(carrier)`\n\n\n# A tibble: 336,776 × 7\n    year time_hour           origin dest  tailnum carrier name                  \n   &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                 \n 1  2013 2013-01-01 05:00:00 EWR    IAH   N14228  UA      United Air Lines Inc. \n 2  2013 2013-01-01 05:00:00 LGA    IAH   N24211  UA      United Air Lines Inc. \n 3  2013 2013-01-01 05:00:00 JFK    MIA   N619AA  AA      American Airlines Inc.\n 4  2013 2013-01-01 05:00:00 JFK    BQN   N804JB  B6      JetBlue Airways       \n 5  2013 2013-01-01 06:00:00 LGA    ATL   N668DN  DL      Delta Air Lines Inc.  \n 6  2013 2013-01-01 05:00:00 EWR    ORD   N39463  UA      United Air Lines Inc. \n 7  2013 2013-01-01 06:00:00 EWR    FLL   N516JB  B6      JetBlue Airways       \n 8  2013 2013-01-01 06:00:00 LGA    IAD   N829AS  EV      ExpressJet Airlines I…\n 9  2013 2013-01-01 06:00:00 JFK    MCO   N593JB  B6      JetBlue Airways       \n10  2013 2013-01-01 06:00:00 LGA    ORD   N3ALAA  AA      American Airlines Inc.\n# ℹ 336,766 more rows\n\n\ninner_join(): Keeps only rows with matching keys in both tables.\n\n# Only keep rows where both x and y have a matching key\ndf1 |&gt; inner_join(df2)\n\nJoining with `by = join_by(key)`\n\n\nWarning in inner_join(df1, df2): Detected an unexpected many-to-many relationship between `x` and `y`.\nℹ Row 2 of `x` matches multiple rows in `y`.\nℹ Row 2 of `y` matches multiple rows in `x`.\nℹ If a many-to-many relationship is expected, set `relationship =\n  \"many-to-many\"` to silence this warning.\n\n\n# A tibble: 5 × 3\n    key val_x val_y\n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1     1 x1    y1   \n2     2 x2    y2   \n3     2 x2    y3   \n4     2 x3    y2   \n5     2 x3    y3   \n\n\n\nIn the example above, dplyr emits a warning as two rows in df1 (those with key value 2) have two matches in df2 (those with key value 2). Often, this is an error (your data isn’t what you expect it to be), but that is the example they showed.\n\nSpecifying Keys:\nBy default, join functions match on columns with the same name. Use join_by() to specify different keys:\n\nflights2 |&gt; left_join(planes, join_by(tailnum))\n\n# A tibble: 336,776 × 14\n   year.x time_hour           origin dest  tailnum carrier year.y type          \n    &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;         \n 1   2013 2013-01-01 05:00:00 EWR    IAH   N14228  UA        1999 Fixed wing mu…\n 2   2013 2013-01-01 05:00:00 LGA    IAH   N24211  UA        1998 Fixed wing mu…\n 3   2013 2013-01-01 05:00:00 JFK    MIA   N619AA  AA        1990 Fixed wing mu…\n 4   2013 2013-01-01 05:00:00 JFK    BQN   N804JB  B6        2012 Fixed wing mu…\n 5   2013 2013-01-01 06:00:00 LGA    ATL   N668DN  DL        1991 Fixed wing mu…\n 6   2013 2013-01-01 05:00:00 EWR    ORD   N39463  UA        2012 Fixed wing mu…\n 7   2013 2013-01-01 06:00:00 EWR    FLL   N516JB  B6        2000 Fixed wing mu…\n 8   2013 2013-01-01 06:00:00 LGA    IAD   N829AS  EV        1998 Fixed wing mu…\n 9   2013 2013-01-01 06:00:00 JFK    MCO   N593JB  B6        2004 Fixed wing mu…\n10   2013 2013-01-01 06:00:00 LGA    ORD   N3ALAA  AA          NA &lt;NA&gt;          \n# ℹ 336,766 more rows\n# ℹ 6 more variables: manufacturer &lt;chr&gt;, model &lt;chr&gt;, engines &lt;int&gt;,\n#   seats &lt;int&gt;, speed &lt;int&gt;, engine &lt;chr&gt;\n\n\n\n\n\n13.5.2.2 Filtering Joins\nFiltering joins select rows from one table based solely on whether they have a match in another table.\n\nsemi_join(): Keeps rows in x that have at least one match in y (does not add columns from y).\n\n# Keep only origin airports that appear in flights2\nairports |&gt; semi_join(flights2, join_by(faa == origin))\n\n# A tibble: 3 × 8\n  faa   name                  lat   lon   alt    tz dst   tzone           \n  &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           \n1 EWR   Newark Liberty Intl  40.7 -74.2    18    -5 A     America/New_York\n2 JFK   John F Kennedy Intl  40.6 -73.8    13    -5 A     America/New_York\n3 LGA   La Guardia           40.8 -73.9    22    -5 A     America/New_York\n\n\nanti_join(): Keeps rows in x that have no match in y.\n\n# Find tail numbers in flights2 that are missing from planes\nflights2 |&gt; anti_join(planes, join_by(tailnum)) |&gt; distinct(tailnum)\n\n# A tibble: 722 × 1\n   tailnum\n   &lt;chr&gt;  \n 1 N3ALAA \n 2 N3DUAA \n 3 N542MQ \n 4 N730MQ \n 5 N9EAMQ \n 6 N532UA \n 7 N3EMAA \n 8 N518MQ \n 9 N3BAAA \n10 N3CYAA \n# ℹ 712 more rows\n\n\n\nThese joining functions provide a powerful and flexible way to integrate data from different sources, ensuring that your analyses are both comprehensive and accurate.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "tidy2.html#tldr",
+    "href": "tidy2.html#tldr",
+    "title": "13  Tidy Data and Reshaping",
+    "section": "13.6 TL;DR",
+    "text": "13.6 TL;DR\n\nTibbles are strict, lazy data frames that print nicely and prevent silent errors.\nWide Data is good for humans (spreadsheets). Long Data is good for computers (R).\nUse pivot_longer() to bundle multiple columns into two key columns (e.g., Subject and Score).\nUse pivot_wider() to spread two columns back out into a table.",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tidy Data and Reshaping</span>"
+    ]
+  },
+  {
+    "objectID": "prac-day-four.html",
+    "href": "prac-day-four.html",
+    "title": "Practical Day Four",
+    "section": "",
+    "text": "Introduction\nData analysis is not only about reshaping tables or filtering rows; it’s about drawing insight through rigorous statistics. In this tutorial, we’ll use the tidyverse to load and transform data, then compute interesting statistics such as means, variances, correlations, and even fit a simple regression model. We’ll work with the nycflights13 dataset (which contains information on over 300,000 flights from New York City in 2013) and touch on a case study using baseball batting averages from the Lahman package.\nTo set up, run the code below:\n# Install tidyverse if not already installed\nif (!requireNamespace(\"tidyverse\", quietly = TRUE)) {\n  install.packages(\"tidyverse\")\n}\nlibrary(tidyverse)\n\n# Install and load nycflights13 for flight data\nif (!requireNamespace(\"nycflights13\", quietly = TRUE)) {\n  install.packages(\"nycflights13\")\n}\nlibrary(nycflights13)",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "Practical Day Four"
+    ]
+  },
+  {
+    "objectID": "prac-day-four.html#questions",
+    "href": "prac-day-four.html#questions",
+    "title": "Practical Day Four",
+    "section": "Questions",
+    "text": "Questions\nUse tidyr and dplyr wherever appropriate below. In other words, do not use base R functions unless necessary or otherwise instructed.\nUsing the flights dataset:\n\nDisplay the flights dataset in an alternative format to simply printing it (i.e. running flights).\nRewrite this code using dplyr and the pipe:\n\nflight1 &lt;- flights[flights$month == 1, ]\ncarrier_vec &lt;- unique(flight1$carrier)\ncarrier_dist_vec_mean &lt;- numeric(length(carrier_vec))\ncarrier_dist_vec_sd &lt;- numeric(length(carrier_vec))\nfor (i in seq_along(carrier_vec)) {\n  carrier_dist_vec_mean[i] &lt;- mean(\n    flight1$distance[flight1$carrier == carrier_vec[i]]\n   )\n  carrier_dist_vec_sd[i] &lt;- sd(\n    flight1$distance[flight1$carrier == carrier_vec[i]]\n  )\n}\ndist_tbl &lt;- tibble(\n  carrier = carrier_vec,\n  mean_distance = carrier_dist_vec_mean,\n  sd_distance = carrier_dist_vec_sd\n)\ndist_tbl[order(dist_tbl$mean_distance), ]\n\nExplain why the standard deviation is NA for one carrier, and why it is 0 for others. Demonstrate your answer using code.\n\n\n\nUsing tidyr and dplyr where appropriate, construct a dataframe where the carriers are along the columns, and the rows are the average departure delay (dep_delay) flown by each carrier (carrier) in each month.\nCalculate the proportion of flights that were delayed (dep_delay greater than 0) but arrived on or before time (arr_delay less than or equal to 0).\nUsing the airlines and flights datasets, do the following, showing the output from each step:\n\n\nIdentify routes that more than one airline flies\nFor each such route, calculate the average arrival delay for each airline (exclude NAs). Find the names of these airlines.\nFor each such route, identify the airline with the worst and best average arrival delay.\nIdentify the route with the greatest difference between the best and worst performing airlines\nDetermine the reason for this difference\n\n\nIdentify all columns with missing entries, typos and any other inconsistencies in the dataset below (load it just by running the code; created using dput command, FYI):\n\nstructure(list(id = c(\"id_1\", \"id_2\", \"id_3\", \"id_4\", \"id_5\", \n\"id_6\", \"id_7\", \"id_8\", \"id_9\", \"id_10\", \"id_11\", \"id_12\", \"id_13\", \n\"id_14\", \"id_15\", \"id_16\", \"id_17\", \"id_18\", \"id_19\", \"id_20\", \n\"id_21\", \"id_22\", \"id_23\", \"id_24\", \"id_25\", \"id_26\", \"id_27\", \n\"id_28\", \"id_29\", \"id_30\", \"id_31\", \"id_32\", \"id_33\", \"id_34\", \n\"id_35\", \"id_36\", \"id_37\", \"id_38\", \"id_39\", \"id_40\", \"id_41\", \n\"id_42\", \"id_43\", \"id_44\", \"id_45\", \"id_46\", \"id_47\", \"id_48\", \n\"id_49\", \"id_50\"), age = c(50L, 34L, 70L, 33L, 22L, 61L, 69L, \n73L, 62L, 56L, 71L, 33L, 73L, 44L, 45L, 46L, 24L, 70L, 46L, 76L, \n47L, 76L, 28L, 48L, 54L, 27L, 45L, 26L, 61L, 28L, 38L, 55L, 33L, \n36L, 62L, 58L, 72L, 31L, 34L, 51L, 61L, 64L, 26L, 28L, 60L, 29L, \n42L, 46L, 79L, 72L), gender = c(\"male\", \"male\", \"male\", \"female\", \n\"female\", \"male\", \"female\", \"male\", \"male\", \"female\", \"female\", \n\"male\", \"male\", \"female\", \"male\", \"male\", \"male\", \"male\", \"female\", \n\"male\", \"male\", \"male\", \"male\", \"female\", \"femal\", \"male\", \"female\", \n\"female\", \"female\", \"female\", \"male\", \"female\", \"female\", \"female\", \n\"male\", \"male\", \"female\", \"male\", \"female\", \"female\", \"male\", \n\"female\", \"female\", \"male\", \"male\", \"female\", \"male\", \"male\", \n\"male\", \"female\"), height = c(174.4, 197.7, 174.1, 194.5, NA, \n180.4, 170.5, 157.4, 196.8, 165.1, 153, 197.4, 186, 157.1, 177.5, \n197.7, 179.3, 170.2, 182.4, NA, 165.4, 161, 168.5, 199.2, 157.7, \n154.6, 157.1, 184.5, 181, 194.6, 183.6, 186.9, 176.1, 183, 191.1, \n189.3, 199, 172, 165.6, 170.5, 150.5, 159.2, 192.1, 161.6, 162, \n153.8, 162.3, 186.6, 192.4, 174.9), weight = c(69.4, 62.3, 55.6, \n69.5, 78.6, 60.8, 72.2, 60.9, 75.1, 67.7, 82.5, 68.7, 67.8, 76.7, \n87, 61.1, 70.6, 63.3, 81.5, 59.2, 93.2, 87.3, 83.4, 80.9, 68.6, \n76.5, 93.7, 79.1, 92, 65.6, 85.4, 63.3, 79.7, 74.1, 63.3, 78.2, \n95.7, 95.1, 63.7, 66.1, 99.3, 81, 96.9, 73.3, 70.3, 83, 57.6, \n78.6, 61.9, 98.1), blood_type = c(\"O\", \"A\", \"O\", \"O\", \"B\", \"AB\", \n\"O\", \"O\", \"O\", \"AB\", \"A\", \"O\", \"O\", \"O\", \"B\", \"A\", \"B\", \"AB\", \n\"O\", \"AB\", \"A\", \"AB\", \"O\", \"B\", \"A\", \"A\", \"B\", \"AB\", \"A\", \"B\", \n\"B\", \"A\", \"O\", \"O\", \"O\", \"B\", \"O\", \"A\", \"A\", \"B\", \"A\", \"O\", \"AB\", \n\"A\", \"A\", \"O\", \"O\", \"B\", \"A\", \"O\"), disease_status = c(\"diseased\", \n\"healthy\", \"healthy\", \"healthy\", \"healthy\", \"healthy\", \"diseased\", \n\"healthy\", \"diseased\", \"Healthy\", \"diseased\", \"healthy\", \"diseased\", \n\"healthy\", \"diseased\", \"healthy\", \"healthy\", \"healthy\", \"healthy\", \n\"healthy\", \"healthy\", \"diseased\", \"healthy\", \"diseased\", \"healthy\", \n\"healthy\", \"healthy\", \"healthy\", \"diseased\", \"diseased\", \"healthy\", \n\"healthy\", \"healthy\", \"diseased\", \"diseased\", \"diseased\", \"healthy\", \n\"diseased\", \"healthy\", \"healthy\", \"healthy\", \"healthy\", \"healthy\", \n\"diseased\", \"diseased\", \"diseased\", \"healthy\", \"healthy\", \"diseased\", \n\"diseased\"), cholesterol = c(228, 223, 213, 198, 166, 151, 195, \n199, 189, 196, 221, 156, 185, 230, 234, 174, 185, 236, 235, 180, \n165, 220, 160, 153, 250, 153, 184, 242, 212, 179, 224, 233, 181, \n199, 220, 214, 214, 248, 191, 162, 203, 173, 199, 187, 248, 189, \n173, 212, 164, 247), glucose = c(96, 78, 101, 119, 103, 91, 86, \nNA, 77, 80, 115, 85, 88, 109, NA, 71, 90, 94, 91, 87, 113, 93, \n97, 118, 109, 80, 85, 119, 99, 108, 89, 108, 97, 116, 79, 84, \n75, 81, 119, NA, 106, 109, 75, 82, 84, 75, 76, 120, 119, 77), \n    smoker = c(\"yes\", \"yes\", \"yes\", \"yes\", \"no\", \"yes\", \"no\", \n    \"yes\", \"no\", \"no\", \"no\", \"no\", \"no\", \"yes\", \"no\", \"yes\", \n    \"yes\", \"yes\", \"yes\", \"yes\", \"yes\", \"yes\", \"yes\", \"yes\", \"no\", \n    \"no\", \"yes\", \"yes\", \"yes\", \"no\", \"no\", \"yes\", \"no\", \"yes\", \n    \"no\", \"yes\", \"no\", \"yes\", \"yes\", \"yes\", \"no\", \"no\", \"yes\", \n    \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"yes\"), exercise = c(\"occasional\", \n    \"regular\", \"occasional\", \"regular\", \"none\", \"occasional\", \n    \"regular\", \"none\", \"occasional\", \"none\", \"occasional\", \"none\", \n    \"none\", \"regular\", \"occasional\", \"none\", \"regular\", \"regular\", \n    \"none\", \"occasional\", \"none\", \"occasional\", \"occasional\", \n    \"occasional\", \"regular\", \"occasional\", \"regular\", \"regular\", \n    \"regular\", \"occasional\", \"occasional\", \"none\", \"none\", \"regular\", \n    \"occasional\", \"occasional\", \"none\", \"none\", \"none\", \"none\", \n    \"occasional\", \"regular\", \"regular\", \"none\", \"regular\", \"occasional\", \n    \"occasional\", \"none\", \"occasional\", \"regular\"), income = c(84820L, \n    81547L, 22588L, 72490L, 74533L, 25338L, 41469L, 57315L, 63629L, \n    88662L, 62615L, 56261L, 58499L, 82232L, 77584L, 77275L, 38468L, \n    54510L, 91326L, 78611L, 31402L, 29586L, 21441L, 58269L, 84173L, \n    88295L, 37940L, 43750L, 69750L, 92356L, 82518L, 91455L, 68866L, \n    51178L, 68275L, 27689L, 35418L, 81318L, 62405L, 86851L, 25654L, \n    47553L, 74474L, 51409L, 22607L, 55360L, 96351L, 21516L, 41927L, \n    55810L), education = c(\"master\", \"bachelor\", \"PhD\", \"master\", \n    \"bachelor\", \"highschool\", \"PhD\", \"highschool\", \"PhD\", \"PhD\", \n    \"bachelor\", \"highschool\", \"master\", \"bachelor\", \"PhD\", \"PhD\", \n    \"PhD\", \"bachelor\", \"master\", \"highschool\", \"PhD\", \"highschool\", \n    \"bachelor\", \"master\", \"highschool\", \"highschool\", \"master\", \n    \"master\", \"bachelor\", \"PhD\", \"highschool\", \"PhD\", \"master\", \n    \"master\", \"master\", \"PhD\", \"highschool\", \"master\", \"master\", \n    \"highschool\", \"bachelor\", \"highschool\", \"bachelor\", \"PhD\", \n    \"bachelor\", \"highschool\", \"master\", \"highschool\", \"bachelor\", \n    \"bachelor\"), region = c(\"North\", \"South\", \"North\", \"West\", \n    \"North\", \"West\", \"South\", \"South\", \"West\", \"South\", \"West\", \n    \"South\", \"West\", \"East\", \"North\", \"West\", \"North\", \"North\", \n    \"West\", \"North\", \"East\", \"West\", \"South\", \"North\", \"North\", \n    \"East\", \"East\", \"North\", \"North\", \"West\", \"South\", \"West\", \n    \"West\", \"East\", \"West\", \"North\", \"West\", \"North\", \"East\", \n    \"North\", \"West\", \"South\", \"South\", \"East\", \"North\", \"West\", \n    \"West\", \"East\", \"North\", \"East\"), marital_status = c(\"divorced\", \n    \"single\", \"divorced\", \"divorced\", \"divorced\", \"divorced\", \n    \"divorced\", \"married\", \"divorced\", \"married\", \"divorced\", \n    \"widowed\", \"married\", \"single\", \"widowed\", \"widowed\", \"single\", \n    \"divorced\", \"widowed\", \"widowed\", \"single\", \"married\", \"single\", \n    \"married\", \"widowed\", \"married\", \"single\", \"single\", \"widowed\", \n    \"married\", \"widowed\", \"divorced\", \"single\", \"married\", \"single\", \n    \"widowed\", \"widowed\", \"married\", \"widowed\", \"divorced\", \"married\", \n    \"married\", \"divorced\", \"single\", \"married\", \"widowed\", \"divorced\", \n    \"divorced\", \"single\", \"divorced\")), row.names = c(NA, -50L\n), class = c(\"tbl_df\", \"tbl\", \"data.frame\"))",
+    "crumbs": [
+      "Day Four: A Tidyverse Workflow",
+      "Practical Day Four"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html",
+    "href": "ggplot2.html",
+    "title": "14  Figures with GGPlot",
+    "section": "",
+    "text": "14.1 Motivation\nContinuing with expanding our understanding of the tidyverse, we can consider the approach to visual representations and plots in R. The package responsible for plotting within the tidyverse framework is ggplot2.\nCreating attractive graphics is a crucial part of data analysis. Visualisations help you explore data, identify patterns, and communicate insights to others.\nWhilst base R graphics (plot) are useful and fast for simple plots, they have the following drawbacks:\nFor this reason, we will be using ggplot2 for our data visualisation needs. ggplot2 is a powerful and flexible package that allows you to create a wide variety of plots. Recall that tidyverse tries to create consistency in their package philosophies and grammar. This will close the loop for the toolkit of a modern statistician in terms of data in R.\nDue to its popularity, people writing the best visualisation packages for R are almost always writing them in ggplot2, so understanding ggplot2 will make it easier to use other packages.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#motivation",
+    "href": "ggplot2.html#motivation",
+    "title": "14  Figures with GGPlot",
+    "section": "",
+    "text": "Documentation is atrocious - it is hard to find what you need.\nIt is very fiddly to create complex plots.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#introduction",
+    "href": "ggplot2.html#introduction",
+    "title": "14  Figures with GGPlot",
+    "section": "14.2 Introduction",
+    "text": "14.2 Introduction\nggplot2 has an underlying philosophy, the Grammar of Graphics, which is a systematic way of thinking about visualisation. This grammar is based on three things:\n\nData: we want tidy data!\nAesthetics (aes): this represents how variables map to visual properties.\nGeometries (geom): this represents the actual plotting of the data.\n\nThe content below is a brief summary of the key points in the R4DS introductory chatpter on ggplot2.\nIn reading the R4DS content, you will come across that term and explanations around it, but in this introduction, I will just refer to the key components of ggplot2 that you need to know to get started.\nTo run the code below, you will need the ggplot2 (installed by tidyverse), palmerpenguins and ggthemes packages:\n\npkg_vec &lt;- c(\"ggplot2\", \"palmerpenguins\", \"ggthemes\")\nfor (x in pkg_vec) {\n  if (!requireNamespace(x, quietly = TRUE)) {\n    install.packages(x, dependencies = TRUE)\n  }\n  # if you want to programmatically attach\n  # libraries, this is the way to to do it\n  library(x, character.only = TRUE)\n}\n\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_point(aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\") +\n  labs(\n    title = \"Body mass and flipper length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Flipper length (mm)\",\n    y = \"Body mass (g)\",\n    color = \"Species\",\n    shape = \"Species\"\n  ) +\n  scale_color_colorblind()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\nInitial ggplot call:\n\nInitialises the plot.\nParameters:\n\ndata:\n\nSpecifies the data.\n\nmapping:\n\nSpecifies how variables are mapped to the x and y axes.\naes(x = flipper_length_mm, y = body_mass_g) maps flipper_length_mm to the x-axis and body_mass_g to the y-axis.\n\nNote that you cannot pass list(x = ..., y = ...) to aes() or just write x = ..., y = ... directly into ggplot. They must be inside the aes() function.\n\n\nParameters set using the initial ggplot call are global to the plot, i.e. unless later geoms (geom_point, geom_smooth, etc.) override them, they will apply to all layers.\n\n\nThe + operator:\n\nAdds layers to the plot.\nEach + adds a new layer.\nNote that it must come at the end of the line - if you put it at the start of a line, R will think that this line is separate from the previous one, as the previous one will have ended.\n\ngeom_point:\n\nAdds points to the plot.\n\naes(color = species, shape = species) maps the species variable to both color and shape.\nSince the initial ggplot call included the mapping aes(x = flipper_length_mm, y = body_mass_g), the geom_point call does not need to repeat this mapping. It will automatically use flipper_length_mm for the x-axis and body_mass_g for the y-axis.\n\n\ngeom_smooth:\n\nAdds a best-fit line to the plot.\n\nmethod = \"lm\" specifies that the line should be a linear model.\n\nmethod = \"loess\" would fit a loess curve, which is what your prac2 asks for.\n\n\nLike geom_point, it does not need to specify the mapping since it inherits it from the initial ggplot call.\n\nlabs:\n\nAdds labels to the plot.\n\ntitle, subtitle, x, y are plot and axis titles.\ncolor, and shape are legend titles.\n\n\nscale_color_colorblind:\n\nChanges the color palette to a colorblind-friendly one.\n\n\nTo get a feel for what different elements are doing, you can drop them from the plot and see what changes.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#summary",
+    "href": "ggplot2.html#summary",
+    "title": "14  Figures with GGPlot",
+    "section": "14.3 Summary",
+    "text": "14.3 Summary\nBelow is a concise summary of the key information on ggplot2:\n\n14.3.1 Basic Structure\n\nInitiating a Plot:\nUse ggplot(data, aes(x, y)) to start a plot. This sets up the canvas by specifying the data and how variables are mapped to the x and y axes. Note that without specifying any geoms (see below), you will not see any content:\n\nggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g))\n\n\n\n\n\n\n\n\n\n\n\n14.3.2 Aesthetic Mappings\n\nMapping Variables to Visual Properties:\nInside aes(), map variables to aesthetics such as:\n\nColor: Differentiates groups (e.g., aes(color = species)).\nShape: Uses different symbols for groups (e.g., aes(shape = species)).\nSize: Can reflect magnitude differences.\n\n\nggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species, shape = species))\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\n\n14.3.3 Geometric Objects (Geoms)\n\nDifferent Plot Types:\nAdd layers to your plot using geoms. Common examples include:\n\nScatterplots: geom_point()\nSmooth Lines: geom_smooth() (e.g., for adding a best-fit line)\nBar Charts: geom_bar() or geom_col()\nHistograms and Density Plots: geom_histogram(), geom_density()\n\n\nggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\n\n14.3.4 Layering and Customization\n\nAdding Layers:\nCombine multiple geoms to add detail to your plot. Layers are added using the + operator.\nCustom Labels and Themes:\nEnhance your plot with titles, axis labels, and legends using labs() and adjust appearance with theme functions.\nggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\") +\n  labs(\n    title = \"Body mass and flipper length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Flipper length (mm)\",\n    y = \"Body mass (g)\",\n    color = \"Species\",\n    shape = \"Species\"\n  ) +\n  scale_color_colorblind()\n\n\n\n14.3.5 Faceting\n\nSplitting Data into Panels:\nUse faceting (with facet_wrap() or facet_grid()) to create subplots based on a categorical variable, making it easier to compare groups.\n\nggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species, shape = species)) +\n  facet_wrap(~ island)\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\n\n14.3.6 Saving Your Plots\n\nExporting Graphics:\nUse ggsave() to save the most recent plot to a file {#sec-day4-prac}(e.g., PNG, PDF).\nggsave(\"penguin-plot.png\")",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#combining-plots-with-cowplotplot_grid",
+    "href": "ggplot2.html#combining-plots-with-cowplotplot_grid",
+    "title": "14  Figures with GGPlot",
+    "section": "14.4 Combining Plots with cowplot::plot_grid",
+    "text": "14.4 Combining Plots with cowplot::plot_grid\nWhen you want to display multiple plots side by side (or in a grid), the cowplot package provides the convenient function plot_grid(). This function not only aligns axes but also lets you add labels (e.g., “A”, “B”, …) so that each subplot is clearly identified. This is especially useful in academic work where figures need to be self-contained and cross-referenced.\nHere’s an example of combining two ggplot figures:\n\n# Install and load cowplot if not already installed\nif (!requireNamespace(\"cowplot\", quietly = TRUE)) {\n  install.packages(\"cowplot\")\n}\nlibrary(cowplot)\n\n# Create two example plots\nlibrary(ggplot2)\nlibrary(palmerpenguins)\nlibrary(ggthemes)\n\np1 &lt;- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Scatterplot: Flipper Length vs Body Mass\") +\n  scale_color_colorblind() +\n  theme_cowplot()  # using cowplot theme for consistent font sizes\n\np2 &lt;- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species)) +\n  geom_smooth(method = \"loess\") +\n  labs(title = \"Scatterplot: Bill Length vs Bill Depth\") +\n  scale_color_colorblind() +\n  theme_cowplot()\n\n# Combine the two plots into one figure with labels\ncombined_plot &lt;- plot_grid(\n  p1, p2,\n  labels = c(\"A\", \"B\"),    # Add subplot labels\n  label_size = 16,         # Adjust label size if needed\n  align = \"hv\",            # Align both horizontally and vertically\n  ncol = 1\n)                # Arrange side by side\n\n\n# Print the combined plot\ncombined_plot\n\n\n\n\n\n\n\n\nAs always, there are other packages that can achieve this (e.g. patchwork), but I’m familiar with cowplot.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#adequate-text-size",
+    "href": "ggplot2.html#adequate-text-size",
+    "title": "14  Figures with GGPlot",
+    "section": "14.5 Adequate Text Size",
+    "text": "14.5 Adequate Text Size\nWhen creating plots, ensure that the text is large enough to be easily read. An appropriate minimum text size varies by forat (e.g. 2m x 1m poster vs a presentation), so look online for specifics (e.g. no less than 14pt for a poster, or whatever it is).\nTypically, the ggplot2 default theme’s text size is too small. I therefore always use the cowplot::theme_cowplot() theme, as it a) has a larger default text size, and b) allows global changes to text size using its font_size parameter (e.g. across plot title, plot axis).\nHere is an example:\n\np1 +\n  # 14 is actually the default, just for demonstration\n  theme_cowplot(font_size = 14) \n\n\n\n\n\n\n\n\nThe theme is fairly minimal, so you can add gridlines, etc. if you want:\n\np1 + \n  theme_cowplot() +\n  # can also have `minor = \"xy\"` for minor gridlines\n  # (i.e. thinner gridlines between the thicker ones).\n  # can also just specify \"x\" or \"y\" for just one axis\n  background_grid(major = \"xy\") \n\n\n\n\n\n\n\n\nA final, important point regarding the theme: by default, the background is transparent, so if you save a plot to file as a PNG, the background will be transparent. To understand, create p1, save it as a PNG and open it:\n\ndir.create(\"_tmp\", showWarnings = FALSE)\nggsave(\"_tmp/p-no_bg.png\", plot = p1)\n\nSo, an unfortunately complication is that if you wish to save PNG images, then you need to usually make the background white:\n\np1 &lt;- p1 +\n  theme_cowplot() +\n  theme(\n    plot.background = element_rect(fill = \"white\"),\n    panel.background = element_rect(fill = \"white\")\n    )\ndir.create(\"_tmp\", showWarnings = FALSE)\nggsave(\"_tmp/p-bg.png\", plot = p1)",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#general-guidelines-for-plots",
+    "href": "ggplot2.html#general-guidelines-for-plots",
+    "title": "14  Figures with GGPlot",
+    "section": "14.6 General Guidelines for Plots",
+    "text": "14.6 General Guidelines for Plots\nThere are many guidelines for plots, but these are the main focuses:\n\nPlot is readable: text large enough, colours and shapes distinguishable.\nPlot is captioned and cross-referenced: plot caption goes below the plot, and the plot is cross-referenced in the text. It should be cross referenced before it appears.\nPlot is self-contained: the plot should be understandable without needing to refer to the main text. Achieve this by:\n\nIncluding a caption with:\n\nAn informative title\nAdditional sentences to describe any important details\nClosing definitions of abbreviations or symbols used in the plot.\n\nLabelling axes and legends clearly\n\nNeatly formatted text:\n\nHeadings should have a consistent sentence/title case\nAll text should be free of punctuation and programming syntax/formatting (e.g. Participant_ID).",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#captions-and-cross-referencing",
+    "href": "ggplot2.html#captions-and-cross-referencing",
+    "title": "14  Figures with GGPlot",
+    "section": "14.7 Captions and cross-referencing",
+    "text": "14.7 Captions and cross-referencing\nTo include a figure that is cross-referenceable, I usually save the image first to file and then use Quarto (or LaTeX syntax) to include it with a caption, label and cross-reference. Even if I don’t want a cross-referencable figure, I usually do this, as I find that the figure dimensions and proportions are more easily controlled this way (than just outputting the figure directly from a code chunk).\nThis approach is analogous to that to creating cross-referenceable tables in the Tables doc.\nHere are the steps:\n\nSave the plot to file. For example:\n\n\ndir.create(\"_tmp\", showWarnings = FALSE)\nggsave(\"_tmp/penguin-plot.png\", plot = p1)\n\n\nIf you are working within Quarto, then you can use the Quarto cross-referencing syntax (details here), which looks like this:\n\n::: {#fig-penguins}\n\n![](_tmp/penguin-plot.png)\n\nBody mass against flipper length.\n\n:::\nand produces this, which can be cross referenced (@fig-penguins produces Figure 14.1) (note - this for some reason does not appear correctly on the website, but locally it works):\n\n\n\n\n\n\nFigure 14.1: Body mass against flipper length.\n\n\n\n\nKey elements of Quarto table cross-referencing syntax for figures:\n\nOpening line:\n\nBegin with :::\nOpen curly braces\nWrite label:\n\nDemarcate it with #\nNo spaces between # and label\nLabel begins with fig-.\nWrite remainder of label\nClose curly braces\n\n\nWrite ![](path/to/img) to include the image\nWrite caption\nClose with :::\nTo cross-reference, write @&lt;label&gt; where &lt;label&gt; is the part immediately following the # in the opening of the ::: block and includes the fig- prefix.\n\n\n\nReference the table using the syntax @&lt;label&gt;, where &lt;label&gt; is the part immediately following the # in the opening of the ::: block: @fig-penguins produces Figure 14.1.\n\nIf you are using LaTeX, then you would do step 1 (save the plot) and then use LaTeX float creation cross-referencing syntax instead.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Figures with GGPlot</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html",
+    "href": "tables.html",
+    "title": "15  Tables",
+    "section": "",
+    "text": "15.1 General Guidelines\nWhen it comes to tables in academic writing or reports, clear and consistent formatting is essential.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#general-guidelines",
+    "href": "tables.html#general-guidelines",
+    "title": "15  Tables",
+    "section": "",
+    "text": "Table Styling:\n\nAvoid Vertical Lines: Most good style guides recommend that tables do not include vertical lines. Horizontal lines should typically only appear above and below the header row and at the bottom of the table.\nMinimal Horizontal Lines: Use only as many horizontal lines as necessary to separate the header from the data.\nRounding and Significant Figures: Present numerical data with a limited, preferrably consistent number of decimal/significant places (usually 2 or 3) to enhance readability. Use a functions like or round() or signif().\nHeadings: Headings should consistently be either title or sentence case, and should not contain punctuation or programming syntax/formatting (e.g. Participant_ID). Headings can be bold or not, but should be consistent throughout the document.\n\nCaptions and Cross-Referencing:\nEvery table should have a concise caption that includes a title and a descriptive sentence. Abbreviations or symbols used within the table must be defined in the caption. In Quarto, assign a label (e.g., tab-summary) so that you can cross-reference the table in your text with @tab-summary. Note: All tables should be referenced in your text before they appear.\nSelf-contained::\nTables should be self-contained in the sense that the reader can understand the table without refering to the main text. This is achieved by including a caption that has an informative detail, uses sentences to describe any important details, and closes with abbreviations or symbols used in the table.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#generating-a-table-from-r",
+    "href": "tables.html#generating-a-table-from-r",
+    "title": "15  Tables",
+    "section": "15.2 Generating a table from R",
+    "text": "15.2 Generating a table from R\nTypically, it is convenient to create the table in R in the relevant output format.\nTo run the following code, attach the following packages:\n\npkg_vec &lt;- c(\"dplyr\", \"palmerpenguins\", \"knitr\")\nfor (x in pkg_vec) {\n  if (!requireNamespace(x, quietly = TRUE)) {\n    install.packages(x, dependencies = TRUE)\n  }\n  # if you want to programmatically attach\n  # libraries, this is the way to to do it\n  library(x, character.only = TRUE)\n}\n\n\n15.2.1 Computed table\n```{r}\n#| results: asis\n# Create a summary table of key statistics by species\npenguin_summary &lt;- penguins |&gt;\n  group_by(species) |&gt;\n  summarise(\n    `Flipper length` = round(mean(flipper_length_mm, na.rm = TRUE), 2),\n    `Body Mass` = round(mean(body_mass_g, na.rm = TRUE), 2),\n    Count = n(),\n    .groups = \"drop\"\n  ) |&gt;\n  rename(Species = species)\n\n# Display the table using knitr::kable\nkable(\n  penguin_summary,\n  caption = \"Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).\"\n)\n```\n\nSummary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).\n\n\nSpecies\nFlipper length\nBody Mass\nCount\n\n\n\n\nAdelie\n189.95\n3700.66\n152\n\n\nChinstrap\n195.82\n3733.09\n68\n\n\nGentoo\n217.19\n5076.02\n124\n\n\n\n\nThe column names were formatted using dplyr.\nThe table styling (no vertical lines, placement of horizontal lines, bold headings) was set using knitr::kable().\nThe table caption was set using knitr::kable() as well.\nNote that the results: asis chunk option is essential to this displaying correctly.\n\n\n\n15.2.2 Copied into a Quarto document\nI find getting labels and cross-referencing to work well when directly computing the table is a bit tricky.\nSo, I prefer to do the following:\n\nRun the code to compute the table in the R console.\n\nIn the example above, that means running the kable() call. Depending on your desired output format, you will get Markdown or LaTeX output (typically). Here is what the Markdown output looks like, running the following code:\n\nkable(penguin_summary)\n\n|Species   |   FL   |   BM    | Count |\n|:---------|:------:|:-------:|:-----:|\n|Adelie    | 189.95 | 3700.66 |  152  |\n|Chinstrap | 195.82 | 3733.09 |  68   |\n|Gentoo    | 217.19 | 5076.02 |  124  |\n\nCopy the output into your Quarto document.\nIf you are working within Quarto, then you can use the Quarto cross-referencing syntax (details here), which looks like this:\n\n::: {#tbl-summary}\n\n|Species   |   FL   |   BM    | Count |\n|:---------|:------:|:-------:|:-----:|\n|Adelie    | 189.95 | 3700.66 |  152  |\n|Chinstrap | 195.82 | 3733.09 |  68   |\n|Gentoo    | 217.19 | 5076.02 |  124  |\n\nSummary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).\n\n:::\nand produces this, which can be cross referenced (@tbl-summary produces Table 15.1):\n\n\n\nTable 15.1: Summary statistics for penguin easurements. Values are rounded to 2 decimal places. Abbreviations: FL = Flipper Length (mm), BM = Body Mass (g).\n\n\n\n\n\nSpecies\nFL\nBM\nCount\n\n\n\n\nAdelie\n189.95\n3700.66\n152\n\n\nChinstrap\n195.82\n3733.09\n68\n\n\nGentoo\n217.19\n5076.02\n124\n\n\n\n\n\n\n\nKey elements of Quarto table cross-referencing syntax:\n\nOpening line:\n\nBegin with :::\nOpen curly braces\nWrite label:\n\nDemarcate it with #\nNo spaces between # and label\nLabel begins with tbl-.\nWrite remainder of label\nClose curly braces\n\n\nPlace table content (copied from previous line)\nWrite caption\nClose with :::\nTo cross-reference, write @&lt;label&gt; where &lt;label&gt; is the part immediately following the # in the opening of the ::: block and includes the tbl- prefix.\n\n\n\nReference the table using the syntax @&lt;label&gt;, where &lt;label&gt; is the part immediately following the # in the opening of the ::: block: @tbl-summary produces Table 15.1.\n\n\n\n15.2.3 LaTeX\nUsing LaTeX: If you are using LaTex (e.g. working in OverLeaf, which you cover in the LaTeX lecture later this week), then you would run the knitr::kable command with format = \"latex\". This will give you a LaTeX table that you can copy into your document. You can then use LaTeX-specific labelling and cross-referencing syntax to reference the table (not covered here).\nBut the basic idea of using R to generate the table contents and overall styling, and then using your document format’s specific syntax for labelling and cross-referencing, remains the same.\nThis approach is much easier than writing out the contents of the table by hand (though manual editing may still be necessary for fine-tuning, e.g. for formatting).\nThere are many other R packages than knitr with the kable function that can generate formatted tables from R objects (e.g. pandoc, gt), so you can choose the one that best fits your needs. knitr::kable’s advantage is simplicity.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
+    "objectID": "prac-day-five.html",
+    "href": "prac-day-five.html",
+    "title": "16  Practical Day Five",
+    "section": "",
+    "text": "16.1 Question One\nExcellent practice is all of the questions in the R4DS Data Visualisation introduction, so I suggest you do them (probably skipping the non-coding questions, so as to get through the content faster).\nIn addition, most (if not all) of Birgit’s uploaded questions involve plots, so you can use those as practice too. They also have the advantage that they will involve learning relevant statistical and mathematical functions.\nHowever, for this practical, here are the questions you will need to answer:",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Practical Day Five</span>"
+    ]
+  },
+  {
+    "objectID": "prac-day-five.html#question-one",
+    "href": "prac-day-five.html#question-one",
+    "title": "16  Practical Day Five",
+    "section": "",
+    "text": "Simulate 100 random numbers from a normal distribution with mean 3 and standard deviation 1. Use ggplot2 to plot the empirical density of these, and format the plot according to best practice (e.g. with axis titles, caption, etc.).\nMake a reference to the plot in the text (e.g. using @fig-dens-plot).\nOverlay the true density of the normal distribution on the plot (hint: use geom_line).",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Practical Day Five</span>"
+    ]
+  },
+  {
+    "objectID": "prac-day-five.html#question-two",
+    "href": "prac-day-five.html#question-two",
+    "title": "16  Practical Day Five",
+    "section": "16.2 Question Two",
+    "text": "16.2 Question Two\nCalculate a two-way frequency table of species of penguins and island location (from the palmerpenguins package’s dataset), and display it according to best practices (e.g. table caption, appropriate lines, etc.).",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Practical Day Five</span>"
+    ]
+  },
+  {
+    "objectID": "prac-day-five.html#question-three",
+    "href": "prac-day-five.html#question-three",
+    "title": "16  Practical Day Five",
+    "section": "16.3 Question Three",
+    "text": "16.3 Question Three\nPlot the distribution of the flipper length of penguins, separated by species. Create three plots:\n\nAll species in the same plot, using the geom_boxplot function.\nAll species in the same plot, and use the geom_density function (hint: use the alpha parameter to make overlapping densities more visible).\nEach species in a separate facet.\n\nThese plots need not include captions or be referenced in the text, but should follow other best practices.",
+    "crumbs": [
+      "Day Five: Displaying data",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Practical Day Five</span>"
+    ]
+  },
+  {
+    "objectID": "parallel.html",
+    "href": "parallel.html",
+    "title": "17  Introduction",
+    "section": "",
+    "text": "Imagine that you have to write 100 different emails. You could try and write all of the emails yourself, but these are long emails and you have a tight deadline. Instead you hire 4 assistants to help you write the emails; sharing the load and increasing task efficiency.\nThe same idea exists in computing; splitting a task into smaller pieces and performing them simultaneously to improve efficiency. This is called Parallel Computing.\n\n18 Why Use Parallel Computing?\nIn R, many processes such as simulations, data processing, and modeling can take a long time when executed sequentially. Parallel computing can help by:\n\nReducing execution time\nHandling large datasets\nRunning multiple tasks at once\n\nThe types of tasks which are compatible with parallel computing include\n\nTask Parallelism: Different tasks run simultaneously.\nData Parallelism: The same task runs on different subsets of data.\nEmbarrassingly Parallel Tasks: Independent tasks that require no communication (e.g., bootstrapping, Monte Carlo).\n\n\n\n19 Parallel Computing in R\nR provides several ways to perform parallel computation:\n\nparallel package (built into R): Provides mclapply(), parLapply(), parApply(), and more.\nforeach package: Allows flexible iteration with %dopar%.\ndoParallel package: Used with foreach to enable parallel execution.\n\n\n19.0.1 Example: Sequential vs. Parallel Execution\n\n19.0.1.1 Sequential Execution with lapply()\n\naComplexFunction &lt;- function(x) {\n  Sys.sleep(1)\n  return(sqrt(x))\n}  \nsystem.time({\n  result &lt;- lapply(1:5, aComplexFunction)\n})\n\n   user  system elapsed \n   0.00    0.00    5.06 \n\n\n\n\n19.0.1.2 Sequential Executions with foreach\n\nlibrary(foreach)\n\nWarning: package 'foreach' was built under R version 4.5.2\n\nsystem.time({\n  result &lt;- foreach(i = 1:5, .combine = c) %do% {\n    aComplexFunction(i)\n  }\n})\n\n   user  system elapsed \n   0.01    0.00    5.06 \n\n\n\n\n19.0.1.3 Parallel Execution with foreach and doParallel\n\nlibrary(doParallel)\n\nWarning: package 'doParallel' was built under R version 4.5.2\n\n\nLoading required package: iterators\n\n\nWarning: package 'iterators' was built under R version 4.5.2\n\n\nLoading required package: parallel\n\ncl &lt;- makeCluster(3)\nregisterDoParallel(cl)\n\nsystem.time({\n  result &lt;- foreach(i = 1:5, .combine = c) %dopar% {\n    aComplexFunction(i)\n  }\n})\n\n   user  system elapsed \n   0.02    0.00    2.05 \n\nstopCluster(cl)\n\n\n\n\n\n20 Setup Costs of Parallel Computing\nIn our analogy of writing emails, whilst it seems like a trivial decision to hire assistants to share the writing load; in reality, it may take even more time to complete the task that way. Whilst the writing process will be quicker, large overheads exist such as the hiring process, explaining the problem, and checking the emails at the end. If a single email does not take a significant amount of time to write, then it could be quicker to just write all of the emails yourself.\nParallel computing shares similar overheads which need to be considered. As a result, parallel computing is a powerful tool for efficiency; however, it should only be used when the sub-tasks are computationally heavy. This will ensure that the time taken to setup the overheads is outweighed by the faster computation time.\nBelow we outline some of the setup overheads for parallel computing.\n\n20.0.1 Data Copying Overhead\nIf the sub-tasks require access to a shared dataset, then sometimes each worker process needs access to the data. On Windows, R copies the data to each worker, which can be memory-intensive. Other platforms can offer forking which prevents this need for data copies.\n\nsome_data_which_is_shared &lt;- numeric(6L)\nmy_data &lt;- some_data_which_is_shared\n  \ncl &lt;- makeCluster(2)\nclusterExport(cl, \"my_data\")  # Copying data to workers\nstopCluster(cl)\n\n\n\n20.0.2 Cluster Initialization Time\nSetting up worker processes takes time, so for small tasks, the overhead may outweigh the benefits.\n\nsystem.time({\n  cl &lt;- makeCluster(2)\n  stopCluster(cl)\n})\n\n   user  system elapsed \n   0.00    0.00    0.14 \n\n\n\n\n20.0.3 Managing Workload Distribution\nNot all tasks are easy to split evenly, and improper load balancing can lead to idle cores.\n\n\n\n21 Other Issues to Consider\n\nSeeds in parallel will be inconsistent. See functions such as irnorm as a solution.\nGlobal variables.\n\n\ncounter &lt;- 0  # Global variable\nhi &lt;- function(i) {\n  counter &lt;&lt;- counter + 1  # This modification won't work properly\n  return(counter)\n}\n\ncl &lt;- makeCluster(3)\nregisterDoParallel(cl)\n\nresult &lt;- foreach(i = 1:10, .combine = c) %dopar%{\n  hi(i)\n}\n\nprint(result)\n\n [1] 1 1 1 2 2 3 3 4 4 5\n\nprint(counter)\n\n[1] 0",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "prac-parallel.html",
+    "href": "prac-parallel.html",
+    "title": "Parallel Computing Practical",
+    "section": "",
+    "text": "Question 1\nUse a foreach loop to repeat 100 times:\ngenerate a random sample from an exponential distribution with mean 1\ncalculate mean and variance\nrow-bind your results (rbind) (results = mean and variance).",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "Parallel Computing Practical"
+    ]
+  },
+  {
+    "objectID": "prac-parallel.html#question-2",
+    "href": "prac-parallel.html#question-2",
+    "title": "Parallel Computing Practical",
+    "section": "Question 2",
+    "text": "Question 2\nUse the doParallel package and foreach to bootstrap the median for the galaxies data (in library MASS).\nIf the foreach function needs access to data or a function from a certain package, this can be done by adding the .packages='MASS' (for example) argument.\nHow does processing time compare to that of serial processing? If each iteration’s run time is small, relative to the amount of data that needs to be loaded and returned, parallel processing might not actually speed up the total run time. Bootstrapping is relatively small: draw a sample, calculate a statistic. It might only start making a difference if each chunk becomes large relatively to the overheads of data transfer. Experiment with this. Try doing 1000 bootstrap samples at a time instead of managing single bootstrap samples.",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "Parallel Computing Practical"
+    ]
+  },
+  {
+    "objectID": "prac-parallel.html#question-3",
+    "href": "prac-parallel.html#question-3",
+    "title": "Parallel Computing Practical",
+    "section": "Question 3",
+    "text": "Question 3\nEstimate coverage of a percentile bootstrap confidence interval for the following scenario: sample of size 50 from an exponential distribution with mean 1.",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "Parallel Computing Practical"
+    ]
+  },
+  {
+    "objectID": "prac-parallel.html#question-4",
+    "href": "prac-parallel.html#question-4",
+    "title": "Parallel Computing Practical",
+    "section": "Question 4",
+    "text": "Question 4\nThe package iterators provides several functions that can be used to create sequences for the foreach function. For example, the irnorm function creates an object that iterates over vectors of normally distributed random numbers. It is useful when you need to use random variables drawn from one distribution in an expression that is run in parallel.\nIn this exercise, use the foreach and irnorm functions to iterate over 3 vectors, each containing 5 random variables. Find the largest value in each vector, and print those largest values.\nBefore running the foreach function set the seed to 1234.",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "Parallel Computing Practical"
+    ]
+  },
+  {
+    "objectID": "prac-parallel.html#question-5",
+    "href": "prac-parallel.html#question-5",
+    "title": "Parallel Computing Practical",
+    "section": "Question 5",
+    "text": "Question 5\nCompare run time between parLapply, foreach and replicate for the above problem.",
+    "crumbs": [
+      "Day Twelve: Parallel Computing",
+      "Parallel Computing Practical"
+    ]
+  }
+]
